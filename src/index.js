@@ -64,9 +64,11 @@ fetchBreeds()
             massiveCats.push({ text: cat.name, value: cat.id })
             // cardContainer.value = cat.id;
             // console.log(cardContainer.value);
-            cardContainer = massiveCats;
+            
         })
+        
     });
+    
 
 function selectCats(event) {
     event.preventDefault();
