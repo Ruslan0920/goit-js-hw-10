@@ -38,7 +38,7 @@ console.log(massive[0]);
 const createObj = books.forEach((book, idx) => {
     console.log(idx);
     massive.push(book.author);
-    return massive
+    // return massive
     // const allAuthors = book.author;
     // console.log(allAuthors);
     // const option = document.createElement('option');
