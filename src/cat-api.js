@@ -3,7 +3,7 @@ const key = { 'x-api-key': 'live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp
 console.log(key);
 
 function fetchBreeds() {
-    return fetch(`${url}/breeds?api_key=${key}`)
+    return fetch(`${url}/breeds`)
         .then(resp => {
         return resp.json();
     })
