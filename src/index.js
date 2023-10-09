@@ -36,10 +36,10 @@ console.log(massive[0]);
 // cardContainer.innerHTML = markup
 
 const createObj = books.forEach((book, idx) => {
-    console.log(idx);
+    console.log(book);
     massive.push(book.author);
     // return massive
-    // const allAuthors = book.author;
+    const allAuthors = book.author;
     // console.log(allAuthors);
     // const option = document.createElement('option');
     // console.log(option);
@@ -54,7 +54,7 @@ const createObj = books.forEach((book, idx) => {
     //   data: massive,
     // });
     // return massive
- 
+    cardContainer.value = allAuthors;
     cardContainer.innerHTML = `<option value="">${massive[0]}</option>`;
 })
    console.log(createObj);
