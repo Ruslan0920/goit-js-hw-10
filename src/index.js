@@ -1,3 +1,4 @@
+import SlimSelect from 'slim-select'
 const cardContainer = document.querySelector('.breed-select');
 console.log(cardContainer);
 const loaderWait = document.querySelector('.loader');
@@ -7,7 +8,7 @@ console.log(errorMessage);
 const descriptionCatInfo = document.querySelector('cat-info');
 console.log(descriptionCatInfo);
  
-cardContainer.addEventListener("submit", selectCat);
+// cardContainer.addEventListener("submit", selectCat);
 
 const books = [
     {
@@ -35,11 +36,44 @@ console.log(massive[0]);
 // console.log(markup);
 // cardContainer.innerHTML = markup
 
-const createObj = books.forEach((book, idx) => {
+
+// const createObj = books.map(book => `<option value="${book.title}">${book.author}</option>`
+// ).join(" ");
+// cardContainer.innerHTML = createObj;
+
+
+const usersByLikes = books.map(book => {
     console.log(book);
-    massive.push(book.author);
-    // return massive
-    const allAuthors = book.author;
+    massive.push({ name: book.author, value: book.title });
+
+
+});
+        new SlimSelect({
+      select: cardContainer,
+    //   data: massive,
+    });
+
+// const createObj = books.map(book => {
+// console.log(book);
+// }
+    
+// massive.push({ text: book.name, value: book.id });
+    
+    // new SlimSelect({
+    //   select: cardContainer,
+    //   data: massive,
+    // });
+
+
+    // console.log(book);
+    // massive.push(book.author);
+    // cardContainer.innerHTML = `<option value="">${massive}</option>`;
+    // console.log(cardContainer.textContent);
+    // return massive;
+
+    
+    // return massive;
+    // const allAuthors = book.author;
     // console.log(allAuthors);
     // const option = document.createElement('option');
     // console.log(option);
@@ -54,15 +88,18 @@ const createObj = books.forEach((book, idx) => {
     //   data: massive,
     // });
     // return massive
-    cardContainer.value = allAuthors;
-    cardContainer.innerHTML = `<option value="">${massive[0]}</option>`;
-})
-   console.log(createObj);
+    // cardContainer.value = allAuthors;
+    // cardContainer.innerHTML = `<option value="">${massive}</option>`;
 
 
-function selectCat(event) {
-    console.log(event);
-}
+//     cardContainer.innerHTML = `<option value="">${createObj}</option>`;
+// console.log(createObj);
+
+
+
+// function selectCat(event) {
+//     console.log(event);
+// }
 
 
 
@@ -73,7 +110,7 @@ function selectCat(event) {
 
 // import '../src/cat-api.js'
 // import { TheCatAPI } from "@thatapicompany/thecatapi";
-import SlimSelect from 'slim-select'
+
 
 // const cardContainer = document.querySelector('.breed-select');
 // console.log(cardContainer);
@@ -238,4 +275,4 @@ import SlimSelect from 'slim-select'
 //     return container;
 // })
 
-// console.log(usersByLikes);
+// console.log(usersByLikes)
