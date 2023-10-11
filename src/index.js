@@ -10,48 +10,66 @@ console.log(descriptionCatInfo);
  
 // cardContainer.addEventListener("submit", selectCat);
 
-const books = [
-    {
-        title: "The Last Kingdom",
-        author: "Bernard Cornwell",
-        rating: 8.38,
-    },
-    {
-        title: "На березі спокійних вод",
-        author: "Роберт Шеклі",
-        rating: 8.51,
-    },
-    {
-        title: "Сон смішної людини",
-        author: "Федір Достоєвський",
-        rating: 7.75,
-    },
-];
-console.log(books);
+// const books = [
+//     {
+//         title: "The Last Kingdom",
+//         author: "Bernard Cornwell",
+//         rating: 8.38,
+//     },
+//     {
+//         title: "На березі спокійних вод",
+//         author: "Роберт Шеклі",
+//         rating: 8.51,
+//     },
+//     {
+//         title: "Сон смішної людини",
+//         author: "Федір Достоєвський",
+//         rating: 7.75,
+//     },
+//     {
+//         title: "Великі сподівання",
+//         author: "Чарльз Діккенс",
+//         rating: 8.75,
+//     },
+// ];
+// console.log(books);
 
-let massive = [];
-console.log(massive);
-console.log(massive[0]);
-// const markup = massive.map(element => element[0]);
-// console.log(markup);
-// cardContainer.innerHTML = markup
+// let massive = [];
+// console.log(massive);
+// console.log(massive[0]);
+// // const markup = massive.map(element => element[0]);
+// // console.log(markup);
+// // cardContainer.innerHTML = markup
 
 
-// const createObj = books.map(book => `<option value="${book.title}">${book.author}</option>`
-// ).join(" ");
+// // const createObj = books.map(book => `<option value="${book.title}">${book.author}</option>`
+// // ).join(" ");
+// // console.log(createObj);
+// // cardContainer.innerHTML = createObj;
+
+// const addObj = books.forEach(item => {
+//     `<option value="${item.title}">${item.author}</option>`;
+//     console.log(item);
+//     massive.push({ name: item.author, value: item.title });
+//     cardContainer.innerHTML = massive;
+// })
+
+// console.log(addObj);
+
+// const createObj = books.map(book => {`<option value="${book.title}">${book.author}</option>`
+//     // console.log(book);
+//     // console.log(book.author);
+//     // massive.push({ name: book.author, value: book.title });
+//     //     new SlimSelect({
+//     //   select: book.author,
+//     //   data: massive,
+//     // });
+// // return massive
+// });
 // cardContainer.innerHTML = createObj;
+// console.log(createObj);
 
 
-const usersByLikes = books.map(book => {
-    console.log(book);
-    massive.push({ name: book.author, value: book.title });
-
-
-});
-        new SlimSelect({
-      select: cardContainer,
-    //   data: massive,
-    });
 
 // const createObj = books.map(book => {
 // console.log(book);
@@ -122,8 +140,7 @@ const usersByLikes = books.map(book => {
 // // const theCatAPI = new TheCatAPI("live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq");
 // // console.log(theCatAPI);
 
-// let massiveCats = []
-// console.log(massiveCats);
+
 
 // // fetchBreeds()
 
@@ -153,24 +170,33 @@ const usersByLikes = books.map(book => {
     
 // // }
 
-// function fetchBreeds() {
-//     return fetch(`https://api.thecatapi.com/v1/breeds`)
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error(response.status);
-//             }
-//             return response.json();
-//         });
-// };
+let arrCats = []
+console.log(arrCats);
 
-// fetchBreeds()
-//     .then(cats => {
-//         console.log(cats);
-//         cats.forEach(cat => {
-//             massiveCats.push({ text: cat.name, value: cat.id })
-//         })
-//         cardContainer.value = massiveCats;
-//     });
+function fetchBreeds() {
+    return fetch(`https://api.thecatapi.com/v1/breeds?key=live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq`)
+        .then(response => {
+            console.log(response);
+            if (!response.ok) {
+                throw new Error(response.status);
+            }
+            return response.json();
+        });
+};
+
+fetchBreeds()
+    .then(cat => {
+        console.log(cat);
+        cat.map(cat => {
+            arrCats.push({ text: cat.name, value: cat.id });
+        })
+        // cardContainer.value = arrCats;
+        // cardContainer.innerHTML = cat;
+        new SlimSelect({
+      select: cardContainer,
+      data: arrCats,
+    });
+    });
     
 
 // function selectCats(event) {
