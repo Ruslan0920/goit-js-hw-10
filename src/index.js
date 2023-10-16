@@ -26,17 +26,18 @@ function fetchBreeds() {
 };
 
 fetchBreeds()
-    .then(cat => {        
+    .then(cat => {
         console.log(cat);
         cat.map(cat => {
-            arrCats.push({ text: cat.name});
+            arrCats.push({ text: cat.name, value: cat.id });
         });
 
-        new SlimSelect({    
+        new SlimSelect({
             select: cardContainer,
             data: arrCats,
         });
-    });
+    })
+    .catch(error => console.log(error));
 
 
 
@@ -44,7 +45,11 @@ function selectCat(event) {
     event.preventDefault();
     console.log(event);
     console.log(event.currentTarget);
-    // divCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
+    console.log(event.currentTarget.value);
+
+      const breedId = event.currentTarget.value;
+  console.log(breedId);
+    // descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
 }
 
 // // function fetchCatByBreed(breedId) {
