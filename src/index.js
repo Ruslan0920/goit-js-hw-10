@@ -27,7 +27,7 @@ function fetchBreeds() {
 
 fetchBreeds()
     .then(cat => {
-        console.log(cat);
+        console.log(cat[0]);
         cat.map(cat => {
             arrCats.push({ text: cat.name, value: cat.id });
         });
@@ -39,7 +39,7 @@ fetchBreeds()
     })
     .catch(error => console.log(error));
 
-
+const url = 'https://api.thecatapi.com/v1';
 
 function selectCat(event) {
     event.preventDefault();
