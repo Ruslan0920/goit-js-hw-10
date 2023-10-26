@@ -20,14 +20,14 @@ let arrCats = []
 function fetchBreeds() {
     return fetch(`https://api.thecatapi.com/v1/breeds?key=live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq`)
         .then(response => {
-            // console.log(response);
+            console.log(response);
             return response.json();
         });
 };
 
 fetchBreeds()
     .then(cat => {
-        // console.log(cat[0]);
+        console.log(cat);
         cat.map(cat => {
             arrCats.push({ text: cat.name, value: cat.id });
         });
@@ -43,7 +43,7 @@ const url = 'https://api.thecatapi.com/v1';
 
 function selectCat(event) {
     event.preventDefault();
-
+console.log(event);
 
       const breedId = event.currentTarget.value;
     console.log(breedId);
@@ -52,8 +52,8 @@ function selectCat(event) {
     .then(data => {
         console.log(data);
         console.log(data[0]);
-        console.log(data[0].id);
-        console.log(data[0].url);
+        // console.log(data[0].id);
+        // console.log(data[0].url);
 
     //     const { url, breeds } = data[0];
     //   console.log(data);
