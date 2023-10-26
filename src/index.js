@@ -15,19 +15,19 @@ cardContainer.addEventListener("change", selectCat);
 
 
 let arrCats = []
-console.log(arrCats);
+// console.log(arrCats);
 
 function fetchBreeds() {
     return fetch(`https://api.thecatapi.com/v1/breeds?key=live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq`)
         .then(response => {
-            console.log(response);
+            // console.log(response);
             return response.json();
         });
 };
 
 fetchBreeds()
     .then(cat => {
-        console.log(cat[0]);
+        // console.log(cat[0]);
         cat.map(cat => {
             arrCats.push({ text: cat.name, value: cat.id });
         });
@@ -43,21 +43,33 @@ const url = 'https://api.thecatapi.com/v1';
 
 function selectCat(event) {
     event.preventDefault();
-    console.log(event);
-    console.log(event.currentTarget);
-    console.log(event.currentTarget.value);
+
 
       const breedId = event.currentTarget.value;
-  console.log(breedId);
+    console.log(breedId);
+    // console.log(breeds);
     // descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
-}
 
-// // function fetchCatByBreed(breedId) {
-// //     return fetch(`${url}/images/search?api_key=${api_key}&breed_ids=${breedId}`)
-// //         .then(response => {
-// // return response.json();
-// //     });
-// // };
+fetchCatByBreed()
+    .then(data => {
+        console.log(data);
+        // console.log(data[0].id);
+        // console.log(data[0].url);
+        
+    });
+};
+
+
+
+function fetchCatByBreed(breedId) {
+    return fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`)
+        .then(response => {
+            console.log(response);
+return response.json();
+    });
+};
+
+
 
 
 // //     theCatAPI.images
