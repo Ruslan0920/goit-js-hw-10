@@ -7,7 +7,7 @@ const loaderWait = document.querySelector('.loader');
 console.log(loaderWait);
 const errorMessage = document.querySelector('.error');
 console.log(errorMessage);
-const descriptionCatInfo = document.querySelector('cat-info');
+const descriptionCatInfo = document.querySelector('.cat-info');
 console.log(descriptionCatInfo);
  
 cardContainer.addEventListener("change", selectCat);
@@ -47,15 +47,18 @@ function selectCat(event) {
 
       const breedId = event.currentTarget.value;
     console.log(breedId);
-    // console.log(breeds);
-    // descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
 
-fetchCatByBreed()
+    fetchCatByBreed(breedId)
     .then(data => {
         console.log(data);
-        // console.log(data[0].id);
-        // console.log(data[0].url);
-        
+        console.log(data[0]);
+        console.log(data[0].id);
+        console.log(data[0].url);
+
+    //     const { url, breeds } = data[0];
+    //   console.log(data);
+    //   console.log(breeds);
+        descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${data[0].url}" alt="Name:" width="400"/></div><div class="box"><h1>Name:</h1><p>Description</p><p><b>Temperament:</b> Temperament</p></div>`;
     });
 };
 
