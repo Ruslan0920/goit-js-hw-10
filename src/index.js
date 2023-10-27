@@ -15,7 +15,7 @@ cardContainer.addEventListener("change", selectCat);
 
 
 let arrCats = []
-// console.log(arrCats);
+console.log(arrCats);
 
 function fetchBreeds() {
     return fetch(`https://api.thecatapi.com/v1/breeds?key=live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq`)
@@ -39,7 +39,8 @@ fetchBreeds()
     })
     .catch(error => console.log(error));
 
-const url = 'https://api.thecatapi.com/v1';
+// const url = 'https://api.thecatapi.com/v1';
+// const api_key = 'live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq'
 
 function selectCat(event) {
     event.preventDefault();
@@ -52,20 +53,20 @@ console.log(event);
     .then(data => {
         console.log(data);
         console.log(data[0]);
-        // console.log(data[0].id);
+        // console.log(data[0].breeds[0].description);
         // console.log(data[0].url);
 
-    //     const { url, breeds } = data[0];
+        // const { url, breeds } = data[0];
     //   console.log(data);
-    //   console.log(breeds);
-        descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${data[0].url}" alt="Name:" width="400"/></div><div class="box"><h1>Name:</h1><p>Description</p><p><b>Temperament:</b> Temperament</p></div>`;
+    //   console.log(breeds[0].temperament);
+        descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${data[0].url}" alt="${data[0].breeds[0].name}" width="400"/></div><div class="box"><h1>${data[0].breeds[0].name}</h1><p>${data[0].breeds[0].description}</p><p><b>Temperament:</b> ${data[0].breeds[0].temperament}</p></div>`;
     });
 };
 
 
 
 function fetchCatByBreed(breedId) {
-    return fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`)
+    return fetch(`https://api.thecatapi.com/v1/images/search?api_key=live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq&breed_ids=${breedId}`)
         .then(response => {
             console.log(response);
 return response.json();
