@@ -1,3 +1,15 @@
+import axios from "axios";
+axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
+axios.defaults.headers.common["x-api-key"] = "live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq";
+// console.log(axios.defaults.headers.common);
+const instance = axios.create({
+  baseURL: 'https://api.thecatapi.com/v1',
+//   Content-Type: 'application/json',
+  headers: {'x-api-key': 'live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq'}
+});
+console.log(instance);
+
+
 import SlimSelect from 'slim-select'
 import '../node_modules/slim-select/dist/slimselect.css'
 
