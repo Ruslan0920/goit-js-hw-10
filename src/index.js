@@ -1,11 +1,13 @@
 import axios from "axios";
-axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
-axios.defaults.headers.common["x-api-key"] = "live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq";
-// console.log(axios.defaults.headers.common);
+// axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
+// axios.defaults.headers.common["x-api-key"] = "live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq";
+// // console.log(axios.defaults.headers.common);
 const instance = axios.create({
-  baseURL: 'https://api.thecatapi.com/v1',
-//   Content-Type: 'application/json',
-  headers: {'x-api-key': 'live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq'}
+  baseURL: 'https://api.thecatapi.com/v1/breeds',
+      headers: {
+        // 'Content-Type': 'application/json',
+        'x-api-key': 'live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq'
+    }
 });
 console.log(instance);
 
@@ -78,7 +80,7 @@ console.log(event);
 
 
 function fetchCatByBreed(breedId) {
-    return fetch(`https://api.thecatapi.com/v1/images/search?api_key=live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq&breed_ids=${breedId}`)
+    return fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}&api_key=live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq`)
         .then(response => {
             console.log(response);
 return response.json();
