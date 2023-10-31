@@ -33,7 +33,7 @@ let arrCats = []
 console.log(arrCats);
 
 function fetchBreeds() {
-    return fetch(`${BASE_URL}/breeds`, option)
+    return fetch(`${BASE_URL}/breeds`, option.headers)
         .then(response => {
             console.log(response);
             return response.json();
