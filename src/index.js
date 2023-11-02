@@ -1,17 +1,21 @@
 import axios from "axios";
 const BASE_URL = axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
-const KEY = axios.defaults.headers.common["x-api-key"] = "live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq";
+// const KEY = axios.defaults.headers.common["x-api-key"] = "live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq";
+// { 'x-api-key' : 'live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq' }
 console.log(axios);
-// const option = axios.create({
-//     // method: 'get',
-//     // baseURL: 'https://api.thecatapi.com/v1',
-//     headers: {
-//         // 'Content-Type': 'application/json',
-//         'x-api-key': 'live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq'
-//     }
-// });
-// console.log(option);
 
+const option = axios({
+    method: 'get',
+    // baseURL: 'https://api.thecatapi.com/v1',
+    headers: {
+        // 'Content-Type': 'application/json',
+        'x-api-key': 'live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq'
+    }
+});
+console.log(option);
+
+const urla = axios.get('https://api.thecatapi.com/v1/images/search', option)
+console.log(urla);
 
 import SlimSelect from 'slim-select'
 import '../node_modules/slim-select/dist/slimselect.css'
@@ -33,7 +37,7 @@ let arrCats = []
 console.log(arrCats);
 
 function fetchBreeds() {
-    return fetch(`${BASE_URL}/breeds`)
+    return fetch(`${BASE_URL}/breeds`, option)
         .then(response => {
             console.log(response);
             return response.json();
