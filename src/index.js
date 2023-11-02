@@ -1,4 +1,5 @@
 import axios from "axios";
+console.log(axios);
 const BASE_URL = axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
 const KEY = axios.defaults.headers.common["x-api-key"] = "live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq";
 
@@ -43,8 +44,6 @@ fetchBreeds()
     })
     .catch(error => console.log(error));
 
-// const url = 'https://api.thecatapi.com/v1';
-// const api_key = 'live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq'
 
 function selectCat(event) {
     event.preventDefault();
@@ -61,7 +60,7 @@ console.log(event);
         // console.log(data[0].url);
 
         const { url, breeds } = data[0];
-      console.log({ url, breeds });
+      console.log(data[0]);
     //   console.log(breeds[0].temperament);
         descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
     });
