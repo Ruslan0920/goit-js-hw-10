@@ -1,22 +1,6 @@
 import axios from "axios";
 const BASE_URL = axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
 const KEY = axios.defaults.headers.common["x-api-key"] = "live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq";
-// { 'x-api-key' : 'live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq' }
-console.log(axios);
-console.log(KEY);
-
-const option = axios.create({
-    method: 'get',
-    // baseURL: 'https://api.thecatapi.com/v1',
-    headers: {
-        // 'Content-Type': 'application/json',
-        'x-api-key': 'live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq'
-    }
-});
-console.log(option);
-
-const urla = axios.get('https://api.thecatapi.com/v1/images/search', option)
-console.log(urla);
 
 import SlimSelect from 'slim-select'
 import '../node_modules/slim-select/dist/slimselect.css'
@@ -76,10 +60,10 @@ console.log(event);
         // console.log(data[0].breeds[0].description);
         // console.log(data[0].url);
 
-        // const { url, breeds } = data[0];
-    //   console.log(data);
+        const { url, breeds } = data[0];
+      console.log({ url, breeds });
     //   console.log(breeds[0].temperament);
-        descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${data[0].url}" alt="${data[0].breeds[0].name}" width="400"/></div><div class="box"><h1>${data[0].breeds[0].name}</h1><p>${data[0].breeds[0].description}</p><p><b>Temperament:</b> ${data[0].breeds[0].temperament}</p></div>`;
+        descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
     });
 };
 
