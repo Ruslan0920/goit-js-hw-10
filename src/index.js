@@ -17,7 +17,9 @@ console.log(descriptionCatInfo);
  
 cardContainer.addEventListener("change", selectCat);
 
-
+    // cardContainer.setAttribute();
+    descriptionCatInfo.setAttribute('hidden', 'true');
+    errorMessage.setAttribute('hidden', 'true');
 
 let arrCats = []
 console.log(arrCats);
@@ -28,6 +30,7 @@ function fetchBreeds() {
             console.log(response);
             return response.json();
         });
+        
 };
 
 fetchBreeds()
@@ -43,6 +46,7 @@ fetchBreeds()
         });
     })
     .catch(error => console.log(error));
+
 
 
 function selectCat(event) {
