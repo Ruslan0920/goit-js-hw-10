@@ -17,9 +17,10 @@ console.log(descriptionCatInfo);
  
 cardContainer.addEventListener("change", selectCat);
 
-    // cardContainer.setAttribute();
-    descriptionCatInfo.setAttribute('hidden', 'true');
-    errorMessage.setAttribute('hidden', 'true');
+    cardContainer.setAttribute('hidden', 'true');
+    // descriptionCatInfo.setAttribute('hidden', 'true');
+errorMessage.setAttribute('hidden', 'true');
+    // loaderWait.setAttribute('hidden', 'true');
 
 let arrCats = []
 console.log(arrCats);
@@ -27,6 +28,8 @@ console.log(arrCats);
 function fetchBreeds() {
     return fetch(`${BASE_URL}/breeds`)
         .then(response => {
+            loaderWait.setAttribute('hidden', 'true');
+
             console.log(response);
             return response.json();
         });
@@ -38,12 +41,15 @@ fetchBreeds()
         console.log(cat);
         cat.map(cat => {
             arrCats.push({ text: cat.name, value: cat.id });
+            
         });
 
         new SlimSelect({
             select: cardContainer,
             data: arrCats,
+            
         });
+        
     })
     .catch(error => console.log(error));
 
@@ -51,7 +57,8 @@ fetchBreeds()
 
 function selectCat(event) {
     event.preventDefault();
-console.log(event);
+    console.log(event);
+    descriptionCatInfo.setAttribute('hidden', 'false');
 
       const breedId = event.currentTarget.value;
     console.log(breedId);
@@ -68,6 +75,7 @@ console.log(event);
     //   console.log(breeds[0].temperament);
         descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
     });
+    
 };
 
 
