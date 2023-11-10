@@ -64,18 +64,18 @@ function selectCat(event) {
 
     fetchCatByBreed(breedId)
     .then(data => {
-        console.log(data);
-        console.log(data[0]);
-        // console.log(data[0].breeds[0].description);
-        // console.log(data[0].url);
-
-        const { url, breeds } = data[0];
+      console.log(data);
       console.log(data[0]);
-    //   console.log(breeds[0].temperament);
-        descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
-    descriptionCatInfo.setAttribute('hidden', false);
+      // console.log(data[0].breeds[0].description);
+      // console.log(data[0].url);
+
+      const { url, breeds } = data[0];
+      console.log(data[0]);
+      //   console.log(breeds[0].temperament);
+      descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
+    //   descriptionCatInfo.removeAttribute('hidden'); 
     });
-    
+   
 };
 
 
