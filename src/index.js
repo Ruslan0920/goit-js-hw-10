@@ -63,7 +63,7 @@ function selectCat(event) {
     console.log(breedId);
 
     fetchCatByBreed(breedId)
-    .then(data => {
+    .then(data => {descriptionCatInfo.removeAttribute('hidden'); 
       console.log(data);
       console.log(data[0]);
       // console.log(data[0].breeds[0].description);
