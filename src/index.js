@@ -17,9 +17,9 @@ console.log(descriptionCatInfo);
  
 cardContainer.addEventListener("change", selectCat);
 
-    cardContainer.setAttribute('hidden', 'true');
-    // descriptionCatInfo.setAttribute('hidden', 'true');
-errorMessage.setAttribute('hidden', 'true');
+    cardContainer.setAttribute('hidden', true);
+    descriptionCatInfo.setAttribute('hidden', true);
+    errorMessage.setAttribute('hidden', true);
     // loaderWait.setAttribute('hidden', 'true');
 
 let arrCats = []
@@ -28,7 +28,7 @@ console.log(arrCats);
 function fetchBreeds() {
     return fetch(`${BASE_URL}/breeds`)
         .then(response => {
-            loaderWait.setAttribute('hidden', 'true');
+            loaderWait.setAttribute('hidden', true);
 
             console.log(response);
             return response.json();
@@ -58,8 +58,7 @@ fetchBreeds()
 function selectCat(event) {
     event.preventDefault();
     console.log(event);
-    descriptionCatInfo.setAttribute('hidden', 'false');
-
+    
       const breedId = event.currentTarget.value;
     console.log(breedId);
 
@@ -74,6 +73,7 @@ function selectCat(event) {
       console.log(data[0]);
     //   console.log(breeds[0].temperament);
         descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
+    descriptionCatInfo.setAttribute('hidden', false);
     });
     
 };
