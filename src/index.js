@@ -29,7 +29,7 @@ function fetchBreeds() {
     return fetch(`${BASE_URL}/breeds`)
         .then(response => {
             loaderWait.setAttribute('hidden', true);
-
+    errorMessage.setAttribute('hidden', true);
             console.log(response);
             return response.json();
         });
