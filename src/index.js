@@ -3,6 +3,7 @@ console.log(axios);
 const BASE_URL = axios.defaults.baseURL = 'https://api.thecatapi.com/v1';
 const KEY = axios.defaults.headers.common["x-api-key"] = "live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq";
 
+import './styles.css'
 import SlimSelect from 'slim-select'
 import '../node_modules/slim-select/dist/slimselect.css'
 
@@ -17,10 +18,10 @@ console.log(descriptionCatInfo);
  
 cardContainer.addEventListener("change", selectCat);
 
-    cardContainer.setAttribute('hidden', true);
-    descriptionCatInfo.setAttribute('hidden', true);
-    errorMessage.setAttribute('hidden', true);
-    // loaderWait.setAttribute('hidden', 'true');
+    // cardContainer.setAttribute('hidden', true);
+    // descriptionCatInfo.setAttribute('hidden', true);
+errorMessage.classList.add('is-hidden');
+    // loaderWait.classList.add('.loader');
 
 let arrCats = []
 console.log(arrCats);
@@ -28,8 +29,7 @@ console.log(arrCats);
 function fetchBreeds() {
     return fetch(`${BASE_URL}/breeds`)
         .then(response => {
-            loaderWait.setAttribute('hidden', true);
-    errorMessage.setAttribute('hidden', true);
+            
             console.log(response);
             return response.json();
         });
@@ -63,7 +63,7 @@ function selectCat(event) {
     console.log(breedId);
 
     fetchCatByBreed(breedId)
-    .then(data => {descriptionCatInfo.removeAttribute('hidden'); 
+        .then(data => {
       console.log(data);
       console.log(data[0]);
       // console.log(data[0].breeds[0].description);
@@ -73,7 +73,6 @@ function selectCat(event) {
       console.log(data[0]);
       //   console.log(breeds[0].temperament);
       descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
-    //   descriptionCatInfo.removeAttribute('hidden'); 
     });
    
 };
