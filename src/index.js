@@ -31,7 +31,7 @@ function fetchBreeds() {
         .then(response => {
             cardContainer.classList.remove('is-hidden');
             loaderWait.classList.add('is-hidden');
-            errorMessage.classList.add('is-hidden');
+            // errorMessage.classList.add('is-hidden');
             console.log(response);
             return response.json();
         });
@@ -75,7 +75,8 @@ function selectCat(event) {
       console.log(data[0]);
       //   console.log(breeds[0].temperament);
       descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
-    });
+    descriptionCatInfo.classList.remove('is-hidden');
+        });
    
 };
 
