@@ -18,9 +18,9 @@ console.log(descriptionCatInfo);
  
 cardContainer.addEventListener("change", selectCat);
 
-    // cardContainer.setAttribute('hidden', true);
-    // descriptionCatInfo.setAttribute('hidden', true);
-errorMessage.classList.add('is-hidden');
+    cardContainer.classList.add('is-hidden');
+    descriptionCatInfo.classList.add('is-hidden');
+    errorMessage.classList.add('is-hidden');
     // loaderWait.classList.add('.loader');
 
 let arrCats = []
@@ -29,7 +29,9 @@ console.log(arrCats);
 function fetchBreeds() {
     return fetch(`${BASE_URL}/breeds`)
         .then(response => {
-            
+            cardContainer.classList.remove('is-hidden');
+            loaderWait.classList.add('is-hidden');
+            errorMessage.classList.add('is-hidden');
             console.log(response);
             return response.json();
         });
