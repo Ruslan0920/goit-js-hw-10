@@ -16,7 +16,7 @@ console.log(errorMessage);
 const descriptionCatInfo = document.querySelector('.cat-info');
 console.log(descriptionCatInfo);
  
-cardContainer.addEventListener("change", selectCat);
+cardContainer.addEventListener("submit", selectCat);
 
     cardContainer.classList.add('is-hidden');
     descriptionCatInfo.classList.add('is-hidden');
@@ -60,7 +60,7 @@ fetchBreeds()
 function selectCat(event) {
     event.preventDefault();
     console.log(event);
-    descriptionCatInfo.classList.remove('is-hidden');
+    
       const breedId = event.currentTarget.value;
     console.log(breedId);
 
@@ -78,7 +78,7 @@ function selectCat(event) {
       console.log(data[0]);
       //   console.log(breeds[0].temperament);
       descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
-
+descriptionCatInfo.classList.remove('is-hidden');
         });
    
 };
