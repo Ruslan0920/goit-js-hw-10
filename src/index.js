@@ -19,7 +19,7 @@ console.log(descriptionCatInfo);
 cardContainer.addEventListener("change", selectCat);
 
     cardContainer.classList.add('is-hidden');
-    descriptionCatInfo.classList.add('is-hidden');
+    // descriptionCatInfo.classList.add('is-hidden');
     errorMessage.classList.add('is-hidden');
     // loaderWait.classList.add('loader');
 
@@ -31,11 +31,11 @@ function fetchBreeds() {
         .then(response => {
             cardContainer.classList.remove('is-hidden');
             loaderWait.classList.add('is-hidden');
-            errorMessage.classList.add('is-hidden');
+            // errorMessage.classList.add('is-hidden');
             console.log(response);
             return response.json();
-        });
-        
+        })
+        // .catch(errorMessage.classList.remove('is-hidden'))
 };
 
 fetchBreeds()
@@ -44,8 +44,8 @@ fetchBreeds()
         cat.map(cat => {
             arrCats.push({ text: cat.name, value: cat.id });
             
-        });
-
+        })
+// .catch(errorMessage.classList.remove('is-hidden'))
         new SlimSelect({
             select: cardContainer,
             data: arrCats,
@@ -63,7 +63,9 @@ function selectCat(event) {
     
       const breedId = event.currentTarget.value;
     console.log(breedId);
-loaderWait.classList.remove('is-hidden');
+
+    
+// loaderWait.classList.remove('is-hidden');
     
     fetchCatByBreed(breedId)
         .then(data => {
@@ -78,8 +80,8 @@ loaderWait.classList.remove('is-hidden');
       console.log(data[0]);
       //   console.log(breeds[0].temperament);
       descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
-            descriptionCatInfo.classList.remove('is-hidden');
-            loaderWait.classList.add('is-hidden');
+            // descriptionCatInfo.classList.remove('is-hidden');
+            // loaderWait.classList.add('is-hidden');
         });
    
 };
@@ -91,7 +93,9 @@ function fetchCatByBreed(breedId) {
     return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}`, { headers: {'x-api-key': KEY}})
         .then(response => {
             console.log(response);
-            
+    //             if (breedId) {
+    //     descriptionCatInfo.classList.remove('is-hidden');
+    // }
 return response.json();
     });
 };
