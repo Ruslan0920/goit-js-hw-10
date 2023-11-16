@@ -3,8 +3,12 @@ body {
 }
 .is-hidden {
     display: none;
-    /* visibility: hidden; */
+    visibility: hidden;
 
+}
+
+.error {
+  display: none;
 }
 
 .breed-select {

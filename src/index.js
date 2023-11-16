@@ -18,9 +18,9 @@ console.log(descriptionCatInfo);
  
 cardContainer.addEventListener("change", selectCat);
 
-    cardContainer.classList.add('is-hidden');
-    descriptionCatInfo.classList.add('is-hidden');
-    errorMessage.classList.add('is-hidden');
+    // cardContainer.classList.add('is-hidden');
+    // descriptionCatInfo.classList.add('is-hidden');
+    // errorMessage.classList.add('is-hidden');
     loaderWait.classList.add('is-hidden');
 
 let arrCats = []
@@ -30,12 +30,12 @@ function fetchBreeds() {
     return fetch(`${BASE_URL}/breeds`)
         .then(response => {
             cardContainer.classList.remove('is-hidden');
-            loaderWait.classList.replace('loader','is-hidden');
-            // errorMessage.classList.add('is-hidden');
+            // loaderWait.classList.remove('is-hidden');
+            errorMessage.classList.add('is-hidden');
             console.log(response);
             return response.json();
         })
-        // .catch(errorMessage.classList.remove('is-hidden'))
+        .catch(error => console.log(error));
 };
 
 fetchBreeds()
@@ -45,7 +45,7 @@ fetchBreeds()
             arrCats.push({ text: cat.name, value: cat.id });
             
         })
-// .catch(errorMessage.classList.remove('is-hidden'))
+
         new SlimSelect({
             select: cardContainer,
             data: arrCats,
@@ -60,12 +60,12 @@ fetchBreeds()
 function selectCat(event) {
     event.preventDefault();
     console.log(event);
-    
+    loaderWait.classList.remove('is-hidden');
       const breedId = event.currentTarget.value;
     console.log(breedId);
 
     
-loaderWait.classList.add('loader');
+// loaderWait.classList.add('is-hidden');
     
     fetchCatByBreed(breedId)
         .then(data => {
