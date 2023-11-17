@@ -67,8 +67,10 @@ function selectCat(event) {
     loaderWait.classList.remove('is-hidden');
 // descriptionCatInfo.classList.remove('is-hidden');
       const breedId = event.currentTarget.value;
-    // console.log(breedId);
-
+    console.log(breedId);
+    if (breedId) {
+    descriptionCatInfo.classList.remove('is-hidden');
+}
     
 // loaderWait.classList.add('is-hidden');
     
@@ -87,7 +89,7 @@ function selectCat(event) {
       descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
             // descriptionCatInfo.classList.remove('is-hidden');
             loaderWait.classList.add('is-hidden');
-            descriptionCatInfo.classList.remove('is-hidden');
+            // descriptionCatInfo.classList.remove('is-hidden');
         })
    .catch(error => alert(error))
 };
