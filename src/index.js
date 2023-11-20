@@ -6,6 +6,8 @@ const KEY = axios.defaults.headers.common["x-api-key"] = "live_58gwQPyj3Dq4FvqlC
 import './styles.css'
 import SlimSelect from 'slim-select'
 import '../node_modules/slim-select/dist/slimselect.css'
+import Notiflix from 'notiflix';
+
 
 const cardContainer = document.querySelector('.breed-select');
 console.log(cardContainer);
@@ -37,7 +39,7 @@ function fetchBreeds() {
             // console.log(der);
             return response.json();
         })
-        // .catch(errorMessage.style.display = 'block');
+        // .catch(Notiflix.Notify.failure('Qui timide rogat docet negare'))
     };
 
 
@@ -68,9 +70,9 @@ function selectCat(event) {
 // descriptionCatInfo.classList.remove('is-hidden');
       const breedId = event.currentTarget.value;
     console.log(breedId);
-    if (breedId) {
-    descriptionCatInfo.classList.remove('is-hidden');
-}
+//     if (breedId) {
+//     descriptionCatInfo.classList.remove('is-hidden');
+// }
     
 // loaderWait.classList.add('is-hidden');
     
