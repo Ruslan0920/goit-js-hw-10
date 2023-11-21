@@ -54,6 +54,8 @@ fetchBreeds()
 new SlimSelect({
             select: cardContainer,
             data: arrCats,
+                  selected: true,
+      disabled: true
 
       });
         // console.log(select);
