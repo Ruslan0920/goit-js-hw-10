@@ -51,12 +51,14 @@ fetchBreeds()
 
         })
 
-      const select = new SlimSelect({
+new SlimSelect({
             select: cardContainer,
             data: arrCats,
-        });
 
-    // descriptionCatInfo.classList.remove('is-hidden');
+      });
+        // console.log(select);
+
+    descriptionCatInfo.classList.remove('is-hidden');
 
     })
     .catch(error => console.log(error));
