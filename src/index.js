@@ -23,6 +23,7 @@ cardContainer.addEventListener("change", selectCat);
     // cardContainer.classList.add('is-hidden');
     // descriptionCatInfo.classList.add('is-hidden');
     // errorMessage.classList.add('is-hidden');
+    descriptionCatInfo.classList.add('is-hidden');
     loaderWait.classList.add('is-hidden');
 
 let arrCats = []
@@ -31,7 +32,7 @@ let arrCats = []
 function fetchBreeds() {
     return fetch(`${BASE_URL}/breeds`)
         .then(response => {
-            descriptionCatInfo.classList.add('is-hidden');
+            // descriptionCatInfo.classList.add('is-hidden');
             cardContainer.style.display = 'flex';
             // cardContainer.classList.remove('display', 'block');
             // cardContainer.classList.remove('is-hidden');
@@ -39,7 +40,7 @@ function fetchBreeds() {
             // console.log(der);
             return response.json();
         })
-        // .catch(Notiflix.Notify.failure('Qui timide rogat docet negare'))
+        // .catch(error => alert('Oops! Something went wrong! Try reloading the page!'));
     };
 
 
@@ -54,13 +55,12 @@ fetchBreeds()
 new SlimSelect({
             select: cardContainer,
             data: arrCats,
-                  selected: true,
-      disabled: true
-
+            // selected: true,                  
+            // disabled: true,
       });
         // console.log(select);
 
-    descriptionCatInfo.classList.remove('is-hidden');
+    // descriptionCatInfo.classList.remove('is-hidden');
 
     })
     .catch(error => console.log(error));
@@ -69,29 +69,25 @@ new SlimSelect({
 
 function selectCat(event) {
     // event.preventDefault();
-    // console.log(event);
+    console.log(event.currentTarget);
     loaderWait.classList.remove('is-hidden');
 // descriptionCatInfo.classList.remove('is-hidden');
       const breedId = event.currentTarget.value;
     console.log(breedId);
-//     if (breedId) {
+//     if (breedId === event.currentTarget.value) {
 //     descriptionCatInfo.classList.remove('is-hidden');
+//         alert ("Working")
 // }
     
 // loaderWait.classList.add('is-hidden');
     
     fetchCatByBreed(breedId)
         .then(data => {
-
-            
-    //   console.log(data);
-    //   console.log(data[0]);
-      // console.log(data[0].breeds[0].description);
-      // console.log(data[0].url);
-
+console.log(data);
       const { url, breeds } = data[0];
     //   console.log(data[0]);
       //   console.log(breeds[0].temperament);
+            
       descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
             // descriptionCatInfo.classList.remove('is-hidden');
             loaderWait.classList.add('is-hidden');
@@ -107,9 +103,6 @@ function fetchCatByBreed(breedId) {
     return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}`, { headers: {'x-api-key': KEY}})
         .then(response => {
             // console.log(response);
-    //             if (breedId) {
-    //     descriptionCatInfo.classList.remove('is-hidden');
-    // }
 return response.json();
     });
 };
