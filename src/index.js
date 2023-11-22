@@ -23,7 +23,7 @@ cardContainer.addEventListener("change", selectCat);
     // cardContainer.classList.add('is-hidden');
     // descriptionCatInfo.classList.add('is-hidden');
     // errorMessage.classList.add('is-hidden');
-    descriptionCatInfo.classList.add('is-hidden');
+    
     loaderWait.classList.add('is-hidden');
 
 let arrCats = []
@@ -32,8 +32,8 @@ let arrCats = []
 function fetchBreeds() {
     return fetch(`${BASE_URL}/breeds`)
         .then(response => {
-            // descriptionCatInfo.classList.add('is-hidden');
-            cardContainer.style.display = 'flex';
+            descriptionCatInfo.classList.add('is-hidden');
+            // cardContainer.style.display = 'flex';
             // cardContainer.classList.remove('display', 'block');
             // cardContainer.classList.remove('is-hidden');
             
@@ -49,18 +49,20 @@ fetchBreeds()
         // console.log(cat);
         cat.map(cat => {
             arrCats.push({ text: cat.name, value: cat.id });
-
+            cardContainer.style.display = 'flex';
         })
+       
 
 new SlimSelect({
             select: cardContainer,
-            data: arrCats,
+    data: arrCats,
+            
             // selected: true,                  
             // disabled: true,
       });
         // console.log(select);
 
-    // descriptionCatInfo.classList.remove('is-hidden');
+    
 
     })
     .catch(error => console.log(error));
@@ -68,16 +70,16 @@ new SlimSelect({
 
 
 function selectCat(event) {
-    // event.preventDefault();
-    console.log(event.currentTarget);
+    event.preventDefault();
+    console.log(event.currentTarget[0]);
     loaderWait.classList.remove('is-hidden');
 // descriptionCatInfo.classList.remove('is-hidden');
       const breedId = event.currentTarget.value;
     console.log(breedId);
-//     if (breedId === event.currentTarget.value) {
-//     descriptionCatInfo.classList.remove('is-hidden');
-//         alert ("Working")
-// }
+    if (breedId === event.currentTarget.value['abys']) {
+    descriptionCatInfo.classList.remove('is-hidden');
+        // alert ("Working")
+}
     
 // loaderWait.classList.add('is-hidden');
     
