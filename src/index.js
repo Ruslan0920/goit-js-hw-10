@@ -6,7 +6,7 @@ const KEY = axios.defaults.headers.common["x-api-key"] = "live_58gwQPyj3Dq4FvqlC
 import './styles.css'
 import SlimSelect from 'slim-select'
 import '../node_modules/slim-select/dist/slimselect.css'
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 
 const cardContainer = document.querySelector('.breed-select');
@@ -65,21 +65,21 @@ new SlimSelect({
     
 
     })
-    .catch(error => console.log(error));
+    .catch(fetchError)
 
 
 
 function selectCat(event) {
     event.preventDefault();
-    console.log(event.currentTarget[0]);
+    // console.log(event.currentTarget[0]);
     loaderWait.classList.remove('is-hidden');
 // descriptionCatInfo.classList.remove('is-hidden');
       const breedId = event.currentTarget.value;
     console.log(breedId);
-    if (breedId === event.currentTarget.value['abys']) {
-    descriptionCatInfo.classList.remove('is-hidden');
-        // alert ("Working")
-}
+//     if (breedId === event.currentTarget.value['abys']) {
+//     descriptionCatInfo.classList.remove('is-hidden');
+//         // alert ("Working")
+// }
     
 // loaderWait.classList.add('is-hidden');
     
@@ -93,9 +93,9 @@ console.log(data);
       descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
             // descriptionCatInfo.classList.remove('is-hidden');
             loaderWait.classList.add('is-hidden');
-            // descriptionCatInfo.classList.remove('is-hidden');
+            descriptionCatInfo.classList.remove('is-hidden');
         })
-   .catch(error => alert(error))
+   .catch(fetchError)
 };
 
 // 
@@ -108,6 +108,22 @@ function fetchCatByBreed(breedId) {
 return response.json();
     });
 };
+
+
+function fetchError(error) {
+  cardContainer.classList.remove('is-hidden');
+  loaderWait.classList.replace('loader', 'is-hidden');
+
+  Notify.failure(
+    'Oops! Something went wrong! Try reloading the page or select another cat breed!',
+    {
+      position: 'center-center',
+      timeout: 5000,
+      width: '400px',
+      fontSize: '24px',
+    }
+  );
+}
 
 
 
