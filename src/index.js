@@ -32,7 +32,7 @@ let arrCats = []
 function fetchBreeds() {
     return fetch(`${BASE_URL}/breeds`)
         .then(response => {
-            descriptionCatInfo.classList.add('is-hidden');
+            // descriptionCatInfo.classList.add('is-hidden');
             // cardContainer.style.display = 'flex';
             // cardContainer.classList.remove('display', 'block');
             // cardContainer.classList.remove('is-hidden');
@@ -50,11 +50,12 @@ fetchBreeds()
         cat.map(cat => {
             arrCats.push({ text: cat.name, value: cat.id });
             cardContainer.style.display = 'flex';
+            descriptionCatInfo.classList.add('is-hidden');
         })
        
 
-new SlimSelect({
-            select: cardContainer,
+        new SlimSelect({
+    select: cardContainer,
     data: arrCats,
             
             // selected: true,                  
@@ -62,7 +63,6 @@ new SlimSelect({
       });
         // console.log(select);
 
-    
 
     })
     .catch(fetchError)
@@ -89,9 +89,10 @@ console.log(data);
       const { url, breeds } = data[0];
     //   console.log(data[0]);
       //   console.log(breeds[0].temperament);
+    // descriptionCatInfo.classList.remove('is-hidden');
             
       descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
-            descriptionCatInfo.classList.remove('is-hidden');
+            // descriptionCatInfo.classList.remove('is-hidden');
             loaderWait.classList.add('is-hidden');        })
    .catch(fetchError)
 };
