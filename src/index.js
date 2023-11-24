@@ -96,7 +96,7 @@ console.log(data);
             loaderWait.classList.add('is-hidden');        })
    .catch(fetchError)
 };
-descriptionCatInfo.classList.remove('is-hidden');
+// descriptionCatInfo.classList.remove('is-hidden');
 // 
 
 
