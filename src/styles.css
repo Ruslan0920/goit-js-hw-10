@@ -2,7 +2,7 @@ body {
     background-color: turquoise;
 }
 .is-hidden {
-    /* display: none; */
+    display: none;
     visibility: hidden;
 
 }

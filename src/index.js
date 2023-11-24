@@ -110,15 +110,15 @@ return response.json();
 
 function fetchError(error) {
     console.log(error);
-    // descriptionCatInfo.classList.add('is-hidden');
-//   cardContainer.classList.remove('is-hidden');
-  loaderWait.classList.replace('loader', 'is-hidden');
+    descriptionCatInfo.classList.add('is-hidden');
+  cardContainer.classList.add('is-hidden');
+    loaderWait.classList.add('is-hidden');
+    // cardContainer.style.display = 'none';
 
   Notify.failure(
     'Oops! Something went wrong! Try reloading the page or select another cat breed!',
     {
       position: 'center-center',
-    //   timeout: 5000,
       width: '400px',
       fontSize: '24px',
     }
