@@ -3,7 +3,7 @@ body {
 }
 .is-hidden {
     display: none;
-    visibility: hidden;
+    /* visibility: hidden; */
 
 }
 
@@ -16,6 +16,10 @@ body {
     max-width: 400px;
     margin: auto;
 }
+
+/* .cat-info {
+  display: none;
+} */
 
 .loader {
   font-size: 18px;
