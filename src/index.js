@@ -91,7 +91,7 @@ console.log(data);
       //   console.log(breeds[0].temperament);
     // descriptionCatInfo.classList.remove('is-hidden');
             
-      descriptionCatInfo.innerHTML = `<div class="box-img is-hidden"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
+      descriptionCatInfo.innerHTML = `<div class="box-img is-hidden"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box is-hidden"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
             descriptionCatInfo.classList.remove('is-hidden');
 
             loaderWait.classList.replace('loader', 'is-hidden');
