@@ -18,7 +18,7 @@ console.log(errorMessage);
 const descriptionCatInfo = document.querySelector('.cat-info');
 console.log(descriptionCatInfo);
  
-cardContainer.addEventListener("change", selectCat, false);
+cardContainer.addEventListener("change", selectCat);
 
     // cardContainer.classList.add('is-hidden');
     // descriptionCatInfo.classList.add('is-hidden');
@@ -46,9 +46,10 @@ function fetchBreeds() {
 
 
 fetchBreeds()
-    .then(cat => {
-        // console.log(cat);
-        cat.map(cat => {
+    .then(cats => {
+        // console.log(cats);
+        cats.map(cat => {
+            // console.log(cat.name);
             arrCats.push({ text: cat.name, value: cat.id });
             cardContainer.style.display = 'flex';
             descriptionCatInfo.classList.add('is-hidden');
@@ -85,35 +86,35 @@ function selectCat(event) {
 // loaderWait.classList.add('is-hidden');
     
     
-//     fetchCatByBreed(breedId)
-//         .then(data => {
-// console.log(data);
-//       const { url, breeds } = data[0];
-//     //   console.log(data[0]);
-//       //   console.log(breeds[0].temperament);
-//     // descriptionCatInfo.classList.remove('is-hidden');
+    fetchCatByBreed(breedId)
+        .then(data => {
+console.log(data);
+      const { url, breeds } = data[0];
+    //   console.log(data[0]);
+      //   console.log(breeds[0].temperament);
+    // descriptionCatInfo.classList.remove('is-hidden');
             
-//       descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
-//             // descriptionCatInfo.classList.remove('is-hidden');
+      descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
+            // descriptionCatInfo.classList.remove('is-hidden');
 
-//             loaderWait.classList.add('is-hidden');
-//             descriptionCatInfo.classList.remove('is-hidden');
+            loaderWait.classList.add('is-hidden');
+            descriptionCatInfo.classList.remove('is-hidden');
             
-//         })
-//    .catch(fetchError)
+        })
+   .catch(fetchError)
 };
 // descriptionCatInfo.classList.remove('is-hidden');
 
 // fetchCatByBreed()
 
-// function fetchCatByBreed(breedId) {
-//     return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}`, { headers: {'x-api-key': KEY}})
-//         .then(response => {
-//             console.log(response);
-//             // descriptionCatInfo.classList.remove('is-hidden');
-// return response.json();
-//     });
-// };
+function fetchCatByBreed(breedId) {
+    return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}`, { headers: {'x-api-key': KEY}})
+        .then(response => {
+            console.log(response);
+            // descriptionCatInfo.classList.remove('is-hidden');
+return response.json();
+    });
+};
 
 
 function fetchError(error) {
@@ -121,6 +122,7 @@ function fetchError(error) {
     descriptionCatInfo.classList.add('is-hidden');
   cardContainer.classList.add('is-hidden');
     loaderWait.classList.add('is-hidden');
+    // errorMessage.style.display = 'flex',
     // cardContainer.style.display = 'none';
 
   Notify.failure(
@@ -128,7 +130,7 @@ function fetchError(error) {
     {
       position: 'center-center',
       width: '400px',
-      fontSize: '24px',
+      fontSize: '20px',
     }
   );
 }
