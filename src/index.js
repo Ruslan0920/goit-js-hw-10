@@ -17,11 +17,10 @@ const errorMessage = document.querySelector('.error');
 console.log(errorMessage);
 const descriptionCatInfo = document.querySelector('.cat-info');
 console.log(descriptionCatInfo);
-// const afterSelectCat = document.querySelector('.ss-main');
-// console.log(afterSelectCat);
+
 
 cardContainer.addEventListener("change", selectCat);
-cardContainer.addEventListener("click", catInfoView);
+
 
     // cardContainer.classList.add('is-hidden');
     // descriptionCatInfo.classList.add('is-hidden');
@@ -74,17 +73,16 @@ fetchBreeds()
 
 function selectCat(event) {
     // event.preventDefault();
-    console.log(event);
+    console.log(event.target.value);
     // loaderWait.classList.add('is-hidden');
 // descriptionCatInfo.classList.remove('is-hidden');
       const breedId = event.currentTarget.value;
     console.log(breedId);
     // descriptionCatInfo.style.display = 'block';
     descriptionCatInfo.classList.add('is-hidden');
-//     if (breedId === event.currentTarget.value['abys']) {
-//     descriptionCatInfo.classList.remove('is-hidden');
-//         // alert ("Working")
-// }
+    if (event.target.value === 'bali') {
+      descriptionCatInfo.classList.remove('is-hidden');      
+        }
     
 loaderWait.classList.remove('is-hidden');
     
@@ -106,12 +104,7 @@ console.log(data);
 
 };
 // descriptionCatInfo.classList.remove('is-hidden');
-function catInfoView() {
-    if (value='bali') {
-      descriptionCatInfo.classList.remove('is-hidden');      
-        }
 
-}
 // fetchCatByBreed()
 
 function fetchCatByBreed(breedId) {
