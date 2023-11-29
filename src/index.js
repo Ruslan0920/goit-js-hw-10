@@ -17,8 +17,11 @@ const errorMessage = document.querySelector('.error');
 console.log(errorMessage);
 const descriptionCatInfo = document.querySelector('.cat-info');
 console.log(descriptionCatInfo);
- 
+// const afterSelectCat = document.querySelector('.ss-main');
+// console.log(afterSelectCat);
+
 cardContainer.addEventListener("change", selectCat);
+cardContainer.addEventListener("click", catInfoView);
 
     // cardContainer.classList.add('is-hidden');
     // descriptionCatInfo.classList.add('is-hidden');
@@ -28,6 +31,8 @@ cardContainer.addEventListener("change", selectCat);
 
 let arrCats = []
 // console.log(arrCats);
+
+
 
 function fetchBreeds() {
     return fetch(`${BASE_URL}/breeds`)
@@ -57,11 +62,11 @@ fetchBreeds()
         })
        
 
-        new SlimSelect({
+     const inputCats = new SlimSelect({
     select: cardContainer,
     data: arrCats,
       });
-        // console.log(select);
+        console.log(inputCats);
     })
     .catch(fetchError)
 
@@ -74,13 +79,15 @@ function selectCat(event) {
 // descriptionCatInfo.classList.remove('is-hidden');
       const breedId = event.currentTarget.value;
     console.log(breedId);
-    descriptionCatInfo.style.display = 'flex';
+    // descriptionCatInfo.style.display = 'block';
+    descriptionCatInfo.classList.add('is-hidden');
 //     if (breedId === event.currentTarget.value['abys']) {
 //     descriptionCatInfo.classList.remove('is-hidden');
 //         // alert ("Working")
 // }
     
-// loaderWait.classList.add('is-hidden');
+loaderWait.classList.remove('is-hidden');
+    
     
     
     fetchCatByBreed(breedId)
@@ -91,17 +98,20 @@ console.log(data);
       //   console.log(breeds[0].temperament);
     // descriptionCatInfo.classList.remove('is-hidden');
             
-      descriptionCatInfo.innerHTML = `<div class="box-img is-hidden"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box is-hidden"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
-            descriptionCatInfo.classList.remove('is-hidden');
-
-            loaderWait.classList.replace('loader', 'is-hidden');
+      descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
             // descriptionCatInfo.classList.remove('is-hidden');
-            
+            loaderWait.classList.add('is-hidden');
         })
-   .catch(fetchError)
+        .catch(fetchError)
+
 };
 // descriptionCatInfo.classList.remove('is-hidden');
+function catInfoView() {
+    if (value='bali') {
+      descriptionCatInfo.classList.remove('is-hidden');      
+        }
 
+}
 // fetchCatByBreed()
 
 function fetchCatByBreed(breedId) {

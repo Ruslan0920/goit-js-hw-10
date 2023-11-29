@@ -2,8 +2,8 @@ body {
     background-color: turquoise;
 }
 .is-hidden {
-    display: none;
-    /* visibility: hidden; */
+    /* display: none; */
+    visibility: hidden;
 
 }
 
