@@ -29,7 +29,7 @@ cardContainer.addEventListener("change", selectCat);
     // loaderWait.classList.add('is-hidden');
 
 let arrCats = []
-// console.log(arrCats);
+console.log(arrCats);
 
 
 
@@ -61,10 +61,23 @@ fetchBreeds()
         })
        
 
-     const inputCats = new SlimSelect({
+    const inputCats = new SlimSelect({
     select: cardContainer,
-    data: arrCats,
-      });
+        data: [arrCats, {text: 'placeholder text'}],
+            //         value: 'FUCKING',
+            // placeholder: true,
+            // text: 'Select Cat',
+            // alwaysOpen: true,
+        settings: {
+            // value: 'FUCKING',
+            placeholder: true,
+            // text: 'Select Cat',
+            alwaysOpen: true,
+            placeholderText: 'Select Cat',
+            // contentPosition: 'relative',
+        }
+    });
+        
         console.log(inputCats);
     })
     .catch(fetchError)
@@ -80,9 +93,9 @@ function selectCat(event) {
     console.log(breedId);
     // descriptionCatInfo.style.display = 'block';
     descriptionCatInfo.classList.add('is-hidden');
-    if (event.target.value === 'bali') {
-      descriptionCatInfo.classList.remove('is-hidden');      
-        }
+    // if (event.target.value === 'bali') {
+    //   descriptionCatInfo.classList.remove('is-hidden');      
+    //     }
     
 loaderWait.classList.remove('is-hidden');
     
@@ -112,7 +125,7 @@ function fetchCatByBreed(breedId) {
         .then(response => {
             console.log(response);
             // loaderWait.classList.add('is-hidden');
-            // descriptionCatInfo.classList.remove('is-hidden');
+            descriptionCatInfo.classList.remove('is-hidden');
 return response.json();
     });
 };
