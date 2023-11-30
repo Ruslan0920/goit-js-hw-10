@@ -63,7 +63,7 @@ fetchBreeds()
 
     const inputCats = new SlimSelect({
     select: cardContainer,
-        data: [arrCats, {text: 'placeholder text'}],
+        data: arrCats,
             //         value: 'FUCKING',
             // placeholder: true,
             // text: 'Select Cat',
@@ -72,7 +72,7 @@ fetchBreeds()
             // value: 'FUCKING',
             placeholder: true,
             // text: 'Select Cat',
-            alwaysOpen: true,
+            // alwaysOpen: true,
             placeholderText: 'Select Cat',
             // contentPosition: 'relative',
         }
