@@ -109,7 +109,7 @@ console.log(data);
       //   console.log(breeds[0].temperament);
     // descriptionCatInfo.classList.remove('is-hidden');
             
-      descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><b>Temperament:</b> ${breeds[0].temperament}</p></div>`;
+      descriptionCatInfo.innerHTML = `<div class="box-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="box"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><h3>Temperament:</h3> ${breeds[0].temperament}</p></div>`;
             // descriptionCatInfo.classList.remove('is-hidden');
             loaderWait.classList.add('is-hidden');
         })
@@ -137,7 +137,7 @@ function fetchError(error) {
   cardContainer.classList.add('is-hidden');
     loaderWait.classList.add('is-hidden');
     // errorMessage.style.display = 'flex',
-    // cardContainer.style.display = 'none';
+    cardContainer.style.display = 'none';
 
   Notify.failure(
     'Oops! Something went wrong! Try reloading the page or select another cat breed!',
