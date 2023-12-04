@@ -89,11 +89,12 @@ function selectCat(event) {
     console.log(event.target.value);
     // loaderWait.classList.add('is-hidden');
 // descriptionCatInfo.classList.remove('is-hidden');
-      const breedId = event.currentTarget.value;
+    //   const breedId = event.currentTarget.value;
+    const breedId = event.target.value;
     console.log(breedId);
     // descriptionCatInfo.style.display = 'block';
     descriptionCatInfo.classList.add('is-hidden');
-    // if (event.target.value === 'bali') {
+    // if (event.currentTarget.value === 'bali') {
     //   descriptionCatInfo.classList.remove('is-hidden');      
     //     }
     
@@ -108,7 +109,9 @@ console.log(data);
     //   console.log(data[0]);
       //   console.log(breeds[0].temperament);
     // descriptionCatInfo.classList.remove('is-hidden');
-            
+             if (data) {
+      descriptionCatInfo.classList.remove('is-hidden');      
+        }   
       descriptionCatInfo.innerHTML = `<div class="cat-info-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="cat-info-container"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><h3>Temperament:</h3> ${breeds[0].temperament}</p></div>`;
             // descriptionCatInfo.classList.remove('is-hidden');
             loaderWait.classList.add('is-hidden');
@@ -125,7 +128,7 @@ function fetchCatByBreed(breedId) {
         .then(response => {
             console.log(response);
             // loaderWait.classList.add('is-hidden');
-            descriptionCatInfo.classList.remove('is-hidden');
+            // descriptionCatInfo.classList.remove('is-hidden');
 return response.json();
     });
 };
