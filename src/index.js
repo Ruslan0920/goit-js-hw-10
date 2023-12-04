@@ -109,7 +109,7 @@ console.log(data);
     //   console.log(data[0]);
       //   console.log(breeds[0].temperament);
     // descriptionCatInfo.classList.remove('is-hidden');
-             if (data) {
+             if (breeds[0].name === breedId) {
       descriptionCatInfo.classList.remove('is-hidden');      
         }   
       descriptionCatInfo.innerHTML = `<div class="cat-info-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="cat-info-container"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><h3>Temperament:</h3> ${breeds[0].temperament}</p></div>`;
