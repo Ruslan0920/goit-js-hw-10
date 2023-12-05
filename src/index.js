@@ -90,7 +90,7 @@ function selectCat(event) {
     // loaderWait.classList.add('is-hidden');
 // descriptionCatInfo.classList.remove('is-hidden');
     //   const breedId = event.currentTarget.value;
-    const breedId = event.target.value;
+    const breedId = event.currentTarget.value;
     console.log(breedId);
     // descriptionCatInfo.style.display = 'block';
     descriptionCatInfo.classList.add('is-hidden');
@@ -104,23 +104,22 @@ loaderWait.classList.remove('is-hidden');
     
     fetchCatByBreed(breedId)
         .then(data => {
-console.log(data[0]);
+console.dir(data[0].breeds);
       const { url, breeds } = data[0];
-      console.dir(data[0]);
+      console.log(data[0].id);
       //   console.log(breeds[0].temperament);
     // descriptionCatInfo.classList.remove('is-hidden');
-             if (breeds[0].id === breedId) {
-      descriptionCatInfo.classList.remove('is-hidden');      
-            }   
+    //          if (breeds[0].id === breedId) {
+    //   descriptionCatInfo.classList.remove('is-hidden');      
+    //         }   
             
       descriptionCatInfo.innerHTML = `<div class="cat-info-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="cat-info-container"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><h3>Temperament:</h3> ${breeds[0].temperament}</p></div>`;
-            // descriptionCatInfo.classList.add('is-hidden');
+            descriptionCatInfo.classList.remove('is-hidden');
             loaderWait.classList.add('is-hidden');
         })
         .catch(fetchError)
 
 };
-// descriptionCatInfo.classList.remove('is-hidden');
 
 // fetchCatByBreed()
 
@@ -151,6 +150,7 @@ function fetchError(error) {
       fontSize: '20px',
     }
   );
+   
 }
 
 
