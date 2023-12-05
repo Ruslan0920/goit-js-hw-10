@@ -106,14 +106,15 @@ loaderWait.classList.remove('is-hidden');
         .then(data => {
 console.log(data);
       const { url, breeds } = data[0];
-    //   console.log(data[0]);
+      console.log(data[0]);
       //   console.log(breeds[0].temperament);
     // descriptionCatInfo.classList.remove('is-hidden');
-             if (breeds[0].name === breedId) {
+             if (breeds[0].id === breedId) {
       descriptionCatInfo.classList.remove('is-hidden');      
-        }   
+            }   
+            
       descriptionCatInfo.innerHTML = `<div class="cat-info-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="cat-info-container"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><h3>Temperament:</h3> ${breeds[0].temperament}</p></div>`;
-            // descriptionCatInfo.classList.remove('is-hidden');
+            // descriptionCatInfo.classList.add('is-hidden');
             loaderWait.classList.add('is-hidden');
         })
         .catch(fetchError)
