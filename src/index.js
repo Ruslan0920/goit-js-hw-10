@@ -104,8 +104,8 @@ loaderWait.classList.remove('is-hidden');
     
     fetchCatByBreed(breedId)
         .then(data => {
-console.log(data);
-      const { url, breeds : {description: catDescription}, {name: catName}, {temperament: catTemperament} } = data[0];
+console.log(data[0]);
+      const { url, breeds } = data[0];
       console.dir(data[0]);
       //   console.log(breeds[0].temperament);
     // descriptionCatInfo.classList.remove('is-hidden');
