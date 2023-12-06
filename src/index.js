@@ -61,31 +61,31 @@ fetchBreeds()
         })
        
 
-    const inputCats = new SlimSelect({
-    select: cardContainer,
-        data: arrCats,
+        const inputCats = new SlimSelect({
+            select: cardContainer,
+            data: arrCats,
             //         value: 'FUCKING',
             // placeholder: true,
             // text: 'Select Cat',
             // alwaysOpen: true,
-        settings: {
-            // value: 'FUCKING',
-            placeholder: true,
-            // text: 'Select Cat',
-            // alwaysOpen: true,
-            placeholderText: 'Select Cat',
-            // contentPosition: 'relative',
-        }
-    });
+            settings: {
+                // value: 'FUCKING',
+                placeholder: true,
+                // text: 'Select Cat',
+                // alwaysOpen: true,
+                placeholderText: 'Select Cat',
+                // contentPosition: 'relative',
+            }
+        });
         
         console.log(inputCats);
     })
-    .catch(fetchError)
+    .catch(fetchError);
 
 
 
 function selectCat(event) {
-    // event.preventDefault();
+    event.preventDefault();
     console.log(event.target.value);
     // loaderWait.classList.add('is-hidden');
 // descriptionCatInfo.classList.remove('is-hidden');
@@ -104,7 +104,8 @@ loaderWait.classList.remove('is-hidden');
     
     fetchCatByBreed(breedId)
         .then(data => {
-console.dir(data[0].breeds[0].id);
+            console.dir(data);
+console.dir(data[0].id);
             const { url, breeds} = data[0];
             console.dir(breeds[0].temperament);
             // {temperament: catTemperament, name: catName, description: catDescription}
