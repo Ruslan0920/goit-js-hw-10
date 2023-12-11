@@ -11,8 +11,8 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const cardContainer = document.querySelector('.breed-select');
 console.log(cardContainer);
-const loaderWait = document.querySelector('.loader');
-console.log(loaderWait);
+const loaderWaitMessage = document.querySelector('.loader');
+console.log(loaderWaitMessage);
 const errorMessage = document.querySelector('.error');
 console.log(errorMessage);
 const descriptionCatInfo = document.querySelector('.cat-info');
@@ -26,7 +26,7 @@ cardContainer.addEventListener("change", selectCat);
     // descriptionCatInfo.classList.add('is-hidden');
     // errorMessage.classList.add('is-hidden');
     
-    // loaderWait.classList.add('is-hidden');
+    // loaderWaitMessage.classList.add('is-hidden');
 
 let arrCats = []
 console.log(arrCats);
@@ -41,7 +41,7 @@ function fetchBreeds() {
             // cardContainer.style.display = 'flex';
             // cardContainer.classList.remove('display', 'block');
             // cardContainer.classList.remove('is-hidden');
-            // loaderWait.classList.add('is-hidden');
+            // loaderWaitMessage.classList.add('is-hidden');
             
             // console.log(der);
             return response.json();
@@ -88,7 +88,7 @@ function selectCat(event) {
     event.preventDefault();
     console.log(event.currentTarget);
     console.log(event.currentTarget.value);
-    // loaderWait.classList.add('is-hidden');
+    // loaderWaitMessage.classList.add('is-hidden');
 // descriptionCatInfo.classList.remove('is-hidden');
     //   const breedId = event.currentTarget.value;
     const breedId = event.currentTarget.value;
@@ -99,7 +99,7 @@ function selectCat(event) {
     //   descriptionCatInfo.classList.remove('is-hidden');      
     //     }
     
-loaderWait.classList.remove('is-hidden');
+loaderWaitMessage.classList.remove('is-hidden');
     
     
     
@@ -118,7 +118,7 @@ console.dir(data[0].id);
             
       descriptionCatInfo.innerHTML = `<div class="cat-info-img"><img src="${url}" alt="${name}" width="400"/></div><div class="cat-info-container"><h1>${name}</h1><p>${description}</p><p><h3>Temperament:</h3> ${temperament}</p></div>`;
             descriptionCatInfo.classList.remove('is-hidden');
-            loaderWait.classList.add('is-hidden');
+            loaderWaitMessage.classList.add('is-hidden');
         })
         .catch(fetchError)
 
@@ -130,7 +130,7 @@ function fetchCatByBreed(breedId) {
     return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}`, { headers: {'x-api-key': KEY}})
         .then(response => {
             console.log(response);
-            // loaderWait.classList.add('is-hidden');
+            // loaderWaitMessage.classList.add('is-hidden');
             // descriptionCatInfo.classList.remove('is-hidden');
 return response.json();
     });
@@ -141,7 +141,7 @@ function fetchError(error) {
     console.log(error);
     descriptionCatInfo.classList.add('is-hidden');
   cardContainer.classList.add('is-hidden');
-    loaderWait.classList.add('is-hidden');
+    loaderWaitMessage.classList.add('is-hidden');
     // errorMessage.style.display = 'flex',
     cardContainer.style.display = 'none';
 
