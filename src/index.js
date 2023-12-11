@@ -86,7 +86,8 @@ fetchBreeds()
 
 function selectCat(event) {
     event.preventDefault();
-    console.log(event.target.value);
+    console.log(event.currentTarget);
+    console.log(event.currentTarget.value);
     // loaderWait.classList.add('is-hidden');
 // descriptionCatInfo.classList.remove('is-hidden');
     //   const breedId = event.currentTarget.value;
@@ -106,8 +107,8 @@ loaderWait.classList.remove('is-hidden');
         .then(data => {
             console.dir(data);
 console.dir(data[0].id);
-            const { url, breeds} = data[0];
-            console.dir(breeds[0].temperament);
+            const { url, breeds: [{name, description, temperament}]} = data[0];
+            console.log(url);
             // {temperament: catTemperament, name: catName, description: catDescription}
       //   console.log(breeds[0].temperament);
     // descriptionCatInfo.classList.remove('is-hidden');
@@ -115,7 +116,7 @@ console.dir(data[0].id);
     //   descriptionCatInfo.classList.remove('is-hidden');      
     //         }   
             
-      descriptionCatInfo.innerHTML = `<div class="cat-info-img"><img src="${url}" alt="${breeds[0].name}" width="400"/></div><div class="cat-info-container"><h1>${breeds[0].name}</h1><p>${breeds[0].description}</p><p><h3>Temperament:</h3> ${breeds[0].temperament}</p></div>`;
+      descriptionCatInfo.innerHTML = `<div class="cat-info-img"><img src="${url}" alt="${name}" width="400"/></div><div class="cat-info-container"><h1>${name}</h1><p>${description}</p><p><h3>Temperament:</h3> ${temperament}</p></div>`;
             descriptionCatInfo.classList.remove('is-hidden');
             loaderWait.classList.add('is-hidden');
         })
