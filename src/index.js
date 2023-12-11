@@ -116,7 +116,17 @@ console.dir(data[0].id);
     //   descriptionCatInfo.classList.remove('is-hidden');      
     //         }   
             
-      descriptionCatInfo.innerHTML = `<div class="cat-info-img"><img src="${url}" alt="${name}" width="400"/></div><div class="cat-info-container"><h1>${name}</h1><p>${description}</p><p><h3>Temperament:</h3> ${temperament}</p></div>`;
+            descriptionCatInfo.innerHTML =
+            `<div class="cat-info-img">
+      <img src="${url}" alt="${name}" width="400"/>
+      </div>
+      <div class="cat-info-container">
+      <h1>${name}</h1>
+      <p>${description}</p>
+      <p>
+      <h3>Temperament:</h3> ${temperament}
+      </p>
+      </div>`;
             descriptionCatInfo.classList.remove('is-hidden');
             loaderWaitMessage.classList.add('is-hidden');
         })
