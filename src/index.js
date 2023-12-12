@@ -86,11 +86,10 @@ fetchBreeds()
 
 function selectCat(event) {
     event.preventDefault();
+    console.log(event);
     console.log(event.currentTarget);
     console.log(event.currentTarget.value);
-    // loaderWaitMessage.classList.add('is-hidden');
-// descriptionCatInfo.classList.remove('is-hidden');
-    //   const breedId = event.currentTarget.value;
+
     const breedId = event.currentTarget.value;
     console.log(breedId);
     // descriptionCatInfo.style.display = 'block';
@@ -101,40 +100,67 @@ function selectCat(event) {
     
 loaderWaitMessage.classList.remove('is-hidden');
     
-    
+
     
     fetchCatByBreed(breedId)
-        .then(data => {
-            console.dir(data);
-console.dir(data[0].id);
-            const { url, breeds: [{name, description, temperament}]} = data[0];
-            console.log(url);
-            // {temperament: catTemperament, name: catName, description: catDescription}
-      //   console.log(breeds[0].temperament);
-    // descriptionCatInfo.classList.remove('is-hidden');
-    //          if (breeds[0].id === breedId) {
-    //   descriptionCatInfo.classList.remove('is-hidden');      
-    //         }   
-            
-            descriptionCatInfo.innerHTML =
-            `<div class="cat-info-img">
+      .then(data => {
+        console.dir(data);
+        console.dir(data[0].id);
+        const {url, breeds: [{ name, description, temperament}]} = data[0];
+        console.log(url);
+        // {temperament: catTemperament, name: catName, description: catDescription}
+        //   console.log(breeds[0].temperament);
+        // descriptionCatInfo.classList.remove('is-hidden');
+        //          if (breeds[0].id === breedId) {
+        //   descriptionCatInfo.classList.remove('is-hidden');
+        //         }
+
+        descriptionCatInfo.innerHTML = `<div class="cat-info-img">
       <img src="${url}" alt="${name}" width="400"/>
       </div>
       <div class="cat-info-container">
-      <h1>${name}</h1>
+      <h2>${name}</h2>
       <p>${description}</p>
-      <p>
-      <h3>Temperament:</h3> ${temperament}
-      </p>
+      <h3>Temperament:</h3>
+      <p>${temperament}</p>
       </div>`;
-            descriptionCatInfo.classList.remove('is-hidden');
-            loaderWaitMessage.classList.add('is-hidden');
-        })
-        .catch(fetchError)
+        descriptionCatInfo.classList.remove('is-hidden');
+        loaderWaitMessage.classList.add('is-hidden');
+      })
+      .catch(fetchError);
 
 };
 
-// fetchCatByBreed()
+// fetchCatByBreed(breedId)
+//   .then(data => {
+//     console.dir(data);
+//     console.dir(data[0].id);
+//     const {
+//       url,
+//       breeds: [{ name, description, temperament }],
+//     } = data[0];
+//     console.log(url);
+//     // {temperament: catTemperament, name: catName, description: catDescription}
+//     //   console.log(breeds[0].temperament);
+//     // descriptionCatInfo.classList.remove('is-hidden');
+//     //          if (breeds[0].id === breedId) {
+//     //   descriptionCatInfo.classList.remove('is-hidden');
+//     //         }
+
+//     descriptionCatInfo.innerHTML = `<div class="cat-info-img">
+//       <img src="${url}" alt="${name}" width="400"/>
+//       </div>
+//       <div class="cat-info-container">
+//       <h1>${name}</h1>
+//       <p>${description}</p>
+//       <p>
+//       <h3>Temperament:</h3> ${temperament}
+//       </p>
+//       </div>`;
+//     descriptionCatInfo.classList.remove('is-hidden');
+//     loaderWaitMessage.classList.add('is-hidden');
+//   })
+//   .catch(fetchError);
 
 function fetchCatByBreed(breedId) {
     return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}`, { headers: {'x-api-key': KEY}})
