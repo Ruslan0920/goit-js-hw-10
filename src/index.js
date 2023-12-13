@@ -75,7 +75,7 @@ fetchBreeds()
   })
   .catch(fetchError);
 
-let breedId = '';
+let breedId = "";
 console.log(breedId);
 
 function selectCat(event) {
@@ -91,6 +91,7 @@ function selectCat(event) {
   descriptionCatInfo.classList.add('is-hidden');
   loaderWaitMessage.classList.remove('is-hidden');
 
+    return breedId;
   // fetchCatByBreed(breedId)
   //   .then(data => {
   //     console.dir(data);
@@ -118,11 +119,12 @@ function selectCat(event) {
   //   })
   //   .catch(fetchError);
 }
+console.log(breedId);
 
 fetchCatByBreed(breedId)
   .then(data => {
-    console.dir(data);
-    console.dir(data[0].id);
+    console.dir(data[0].url);
+    // console.dir(data[0].id);
       
     // const {
     //   url,
@@ -137,7 +139,7 @@ fetchCatByBreed(breedId)
     //         }
 
     // descriptionCatInfo.innerHTML = `<div class="cat-info-img">
-    //   <img src="${url}" alt="${name}" width="400"/>
+    //   <img src="${data[0].url}" alt="${name}" width="400"/>
     //   </div>
     //   <div class="cat-info-container">
     //   <h1>${name}</h1>
