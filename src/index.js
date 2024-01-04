@@ -57,18 +57,6 @@ fetchBreeds()
     const inputCats = new SlimSelect({
       select: cardContainer,
       data: arrCats,
-      //         value: 'FUCKING',
-      // placeholder: true,
-      // text: 'Select Cat',
-      // alwaysOpen: true,
-      settings: {
-        // value: 'FUCKING',
-        placeholder: true,
-        // text: 'Select Cat',
-        // alwaysOpen: true,
-        placeholderText: 'Select Cat',
-        // contentPosition: 'relative',
-      },
     });
 
     console.log(inputCats);
