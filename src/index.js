@@ -57,26 +57,13 @@ fetchBreeds()
     const inputCats = new SlimSelect({
       select: cardContainer,
       data: arrCats,
-      //         value: 'FUCKING',
-      // placeholder: true,
-      // text: 'Select Cat',
-      // alwaysOpen: true,
-      settings: {
-        // value: 'FUCKING',
-        placeholder: true,
-        // text: 'Select Cat',
-        // alwaysOpen: true,
-        placeholderText: 'Select Cat',
-        // contentPosition: 'relative',
-      },
     });
 
     console.log(inputCats);
   })
   .catch(fetchError);
 
-let breedId = "";
-console.log(breedId);
+
 
 function selectCat(event) {
 //   cardContainer.style.display = 'flex';
@@ -91,63 +78,35 @@ function selectCat(event) {
   descriptionCatInfo.classList.add('is-hidden');
   loaderWaitMessage.classList.remove('is-hidden');
 
-    return breedId;
-  // fetchCatByBreed(breedId)
-  //   .then(data => {
-  //     console.dir(data);
-  //     console.dir(data[0].id);
-  //     const {url, breeds: [{ name, description, temperament}]} = data[0];
-  //     console.log(url);
-  //     // {temperament: catTemperament, name: catName, description: catDescription}
-  //     //   console.log(breeds[0].temperament);
-  //     // descriptionCatInfo.classList.remove('is-hidden');
-  //     //          if (breeds[0].id === breedId) {
-  //     //   descriptionCatInfo.classList.remove('is-hidden');
-  //     //         }
 
-  //     descriptionCatInfo.innerHTML = `<div class="cat-info-img">
-  //   <img src="${url}" alt="${name}" width="400"/>
-  //   </div>
-  //   <div class="cat-info-container">
-  //   <h2>${name}</h2>
-  //   <p>${description}</p>
-  //   <h3>Temperament:</h3>
-  //   <p>${temperament}</p>
-  //   </div>`;
-  //     descriptionCatInfo.classList.remove('is-hidden');
-  //     loaderWaitMessage.classList.add('is-hidden');
-  //   })
-  //   .catch(fetchError);
+  fetchCatByBreed(breedId)
+    .then(data => {
+      console.dir(data);
+      console.dir(data[0].id);
+      const {url, breeds: [{ name, description, temperament}]} = data[0];
+      console.log(url);
+
+      descriptionCatInfo.innerHTML = `<div class="cat-info-img">
+    <img src="${url}" alt="${name}" width="400"/>
+    </div>
+    <div class="cat-info-container">
+    <h2>${name}</h2>
+    <p>${description}</p>
+    <h3>Temperament:</h3>
+    <p>${temperament}</p>
+    </div>`;
+      descriptionCatInfo.classList.remove('is-hidden');
+      loaderWaitMessage.classList.add('is-hidden');
+    })
+    .catch(fetchError);
 }
-console.log(breedId);
 
 fetchCatByBreed(breedId)
   .then(data => {
     console.dir(data[0].url);
     // console.dir(data[0].id);
-      
-    // const {
-    //   url,
-    //   breeds: [{ name, description, temperament }],
-    // } = data[0];
-    // console.log(url);
-    // {temperament: catTemperament, name: catName, description: catDescription}
-    //   console.log(breeds[0].temperament);
-    // descriptionCatInfo.classList.remove('is-hidden');
-    //          if (breeds[0].id === breedId) {
-    //   descriptionCatInfo.classList.remove('is-hidden');
-    //         }
+    console.log(breedId);
 
-    // descriptionCatInfo.innerHTML = `<div class="cat-info-img">
-    //   <img src="${data[0].url}" alt="${name}" width="400"/>
-    //   </div>
-    //   <div class="cat-info-container">
-    //   <h1>${name}</h1>
-    //   <p>${description}</p>
-    //   <p>
-    //   <h3>Temperament:</h3> ${temperament}
-    //   </p>
-    //   </div>`;
     descriptionCatInfo.classList.remove('is-hidden');
     loaderWaitMessage.classList.add('is-hidden');
   })
