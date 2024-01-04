@@ -57,36 +57,55 @@ fetchBreeds()
     const inputCats = new SlimSelect({
       select: cardContainer,
       data: arrCats,
+      //         value: 'FUCKING',
+      // placeholder: true,
+      // text: 'Select Cat',
+      // alwaysOpen: true,
+      settings: {
+        // value: 'FUCKING',
+        placeholder: true,
+        // text: 'Select Cat',
+        // alwaysOpen: true,
+        placeholderText: 'Select Cat',
+        // contentPosition: 'relative',
+      },
     });
 
     console.log(inputCats);
   })
   .catch(fetchError);
 
-
+// let breedId = "";
+// console.log(breedId);
 
 function selectCat(event) {
 //   cardContainer.style.display = 'flex';
   event.preventDefault();
   console.log(event);
 //   console.log(event.target);
-//   console.log(event.currentTarget.value);
+  // console.log(event.currentTarget.value);
 
   breedId = event.currentTarget.value;
   console.log(breedId);
   // descriptionCatInfo.style.display = 'block';
   descriptionCatInfo.classList.add('is-hidden');
   loaderWaitMessage.classList.remove('is-hidden');
-
-
+// createMarkUp()
+    // return breedId;
   fetchCatByBreed(breedId)
     .then(data => {
       console.dir(data);
       console.dir(data[0].id);
       const {url, breeds: [{ name, description, temperament}]} = data[0];
       console.log(url);
-
-      descriptionCatInfo.innerHTML = `<div class="cat-info-img">
+      // {temperament: catTemperament, name: catName, description: catDescription}
+      //   console.log(breeds[0].temperament);
+      // descriptionCatInfo.classList.remove('is-hidden');
+      //          if (breeds[0].id === breedId) {
+      //   descriptionCatInfo.classList.remove('is-hidden');
+      //         }
+      function createMarkUp() {
+  descriptionCatInfo.innerHTML = `<div class="cat-info-img">
     <img src="${url}" alt="${name}" width="400"/>
     </div>
     <div class="cat-info-container">
@@ -97,29 +116,16 @@ function selectCat(event) {
     </div>`;
       descriptionCatInfo.classList.remove('is-hidden');
       loaderWaitMessage.classList.add('is-hidden');
+}
+   createMarkUp()   
     })
     .catch(fetchError);
 }
-
-fetchCatByBreed(breedId)
-  .then(data => {
-    console.dir(data[0].url);
-    // console.dir(data[0].id);
-    console.log(breedId);
-
-    descriptionCatInfo.classList.remove('is-hidden');
-    loaderWaitMessage.classList.add('is-hidden');
-  })
-  .catch(fetchError);
-
-// fetchCatByBreed(breedId);
 
 function fetchCatByBreed(breedId) {
     return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}`, { headers: {'x-api-key': KEY}})
         .then(response => {
             console.log(response);
-            // loaderWaitMessage.classList.add('is-hidden');
-            // descriptionCatInfo.classList.remove('is-hidden');
 return response.json();
     });
 };
