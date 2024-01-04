@@ -79,6 +79,7 @@ fetchBreeds()
 // console.log(breedId);
 
 function selectCat(event) {
+  
 //   cardContainer.style.display = 'flex';
   event.preventDefault();
   console.log(event);
@@ -96,6 +97,7 @@ function selectCat(event) {
     .then(data => {
       console.dir(data);
       console.dir(data[0].id);
+      
       const {url, breeds: [{ name, description, temperament}]} = data[0];
       console.log(url);
       // {temperament: catTemperament, name: catName, description: catDescription}
@@ -104,7 +106,7 @@ function selectCat(event) {
       //          if (breeds[0].id === breedId) {
       //   descriptionCatInfo.classList.remove('is-hidden');
       //         }
-      function createMarkUp() {
+      function createMarkUp(view) {
   descriptionCatInfo.innerHTML = `<div class="cat-info-img">
     <img src="${url}" alt="${name}" width="400"/>
     </div>
@@ -114,11 +116,12 @@ function selectCat(event) {
     <h3>Temperament:</h3>
     <p>${temperament}</p>
     </div>`;
-      descriptionCatInfo.classList.remove('is-hidden');
+      // descriptionCatInfo.classList.remove('is-hidden');
       loaderWaitMessage.classList.add('is-hidden');
 }
-   createMarkUp()   
+      createMarkUp();
     })
+
     .catch(fetchError);
 }
 
