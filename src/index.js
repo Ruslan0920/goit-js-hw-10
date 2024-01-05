@@ -70,7 +70,7 @@ function selectCat(event) {
   
 //   cardContainer.style.display = 'flex';
   event.preventDefault();
-  console.log(event);
+  console.dir(event);
 //   console.log(event.target);
   // console.log(event.currentTarget.value);
 
@@ -91,9 +91,7 @@ function selectCat(event) {
       // {temperament: catTemperament, name: catName, description: catDescription}
       //   console.log(breeds[0].temperament);
       // descriptionCatInfo.classList.remove('is-hidden');
-      //          if (breeds[0].id === breedId) {
-      //   descriptionCatInfo.classList.remove('is-hidden');
-      //         }
+
       function createMarkUp(view) {
   descriptionCatInfo.innerHTML = `<div class="cat-info-img">
     <img src="${url}" alt="${name}" width="400"/>
@@ -107,7 +105,10 @@ function selectCat(event) {
       // descriptionCatInfo.classList.remove('is-hidden');
       loaderWaitMessage.classList.add('is-hidden');
 }
-      createMarkUp();
+      // createMarkUp();
+                     if (breedId) {
+        descriptionCatInfo.classList.remove('is-hidden');;
+              }
     })
 
     .catch(fetchError);
