@@ -81,6 +81,10 @@ function selectCat(event) {
   loaderWaitMessage.classList.remove('is-hidden');
 // createMarkUp()
     // return breedId;
+        // if (breedId === event.target.value) {
+        // descriptionCatInfo.classList.remove('is-hidden');
+        //       }
+                       
   fetchCatByBreed(breedId)
     .then(data => {
       console.dir(data);
@@ -91,6 +95,8 @@ function selectCat(event) {
       // {temperament: catTemperament, name: catName, description: catDescription}
       //   console.log(breeds[0].temperament);
       // descriptionCatInfo.classList.remove('is-hidden');
+
+
 
       function createMarkUp(view) {
   descriptionCatInfo.innerHTML = `<div class="cat-info-img">
@@ -105,14 +111,13 @@ function selectCat(event) {
       // descriptionCatInfo.classList.remove('is-hidden');
       loaderWaitMessage.classList.add('is-hidden');
 }
-      // createMarkUp();
-                     if (breedId) {
-        descriptionCatInfo.classList.remove('is-hidden');;
-              }
+      createMarkUp();
+
     })
 
     .catch(fetchError);
 }
+
 
 function fetchCatByBreed(breedId) {
     return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}`, { headers: {'x-api-key': KEY}})
