@@ -75,9 +75,10 @@ function selectCat(event) {
   loaderWaitMessage.classList.remove('is-hidden');
 // createMarkUp()
     // return breedId;
-        // if (breedId) {
-        // descriptionCatInfo.classList.remove('is-hidden');
-        //       }
+        if (breedId) {
+        descriptionCatInfo.classList.remove('is-hidden');
+  }
+  alert(breedId)
                        
   fetchCatByBreed(breedId)
     .then(data => {
