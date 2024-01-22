@@ -1,5 +1,5 @@
 import axios from 'axios';
-console.log(axios);
+// console.log(axios);
 const BASE_URL = (axios.defaults.baseURL = 'https://api.thecatapi.com/v1');
 const KEY = (axios.defaults.headers.common['x-api-key'] =
   'live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq');
@@ -10,13 +10,13 @@ import '../node_modules/slim-select/dist/slimselect.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const cardContainer = document.querySelector('.breed-select');
-console.log(cardContainer);
+// console.log(cardContainer);
 const loaderWaitMessage = document.querySelector('.loader');
-console.log(loaderWaitMessage);
+// console.log(loaderWaitMessage);
 const errorMessage = document.querySelector('.error');
-console.log(errorMessage);
+// console.log(errorMessage);
 const descriptionCatInfo = document.querySelector('.cat-info');
-console.log(descriptionCatInfo);
+// console.log(descriptionCatInfo);
 
 cardContainer.addEventListener('change', selectCat);
 
@@ -27,7 +27,7 @@ cardContainer.addEventListener('change', selectCat);
 // loaderWaitMessage.classList.add('is-hidden');
 
 let arrCats = [];
-console.log(arrCats);
+// console.log(arrCats);
 
 function fetchBreeds() {
   return fetch(`${BASE_URL}/breeds`)
@@ -64,9 +64,9 @@ function selectCat(event) {
   
 //   cardContainer.style.display = 'flex';
   event.preventDefault();
-  console.dir(event);
+  console.log(event);
 //   console.log(event.target);
-  console.log(event.currentTarget.value);
+  // console.log(event.currentTarget.value);
 
   breedId = event.currentTarget.value;
   console.log(breedId);
@@ -76,7 +76,7 @@ function selectCat(event) {
 // createMarkUp()
     // return breedId;
   //       if (breedId) {
-  //       descriptionCatInfo.classList.remove('is-hidden');
+  //       createMarkUp()
   // }
 
                        
@@ -91,7 +91,7 @@ function selectCat(event) {
       //   console.log(breeds[0].temperament);
       // descriptionCatInfo.classList.remove('is-hidden');
 
-      // function createMarkUp() {
+      function createMarkUp() {
   descriptionCatInfo.innerHTML = `<div class="cat-info-img">
     <img src="${url}" alt="${name}" width="400"/>
     </div>
@@ -103,8 +103,8 @@ function selectCat(event) {
     </div>`;
       descriptionCatInfo.classList.remove('is-hidden');
       loaderWaitMessage.classList.add('is-hidden');
-// }
-      // createMarkUp();
+}
+      createMarkUp();
 
     })
 
@@ -146,7 +146,7 @@ function selectCat(event) {
 //     })
 //   .catch(fetchError);
     
-//         function createMarkUp(view) {
+//         function createMarkUp() {
 //   descriptionCatInfo.innerHTML = `<div class="cat-info-img">
 //     <img src="${url}" alt="${name}" width="400"/>
 //     </div>
@@ -156,7 +156,7 @@ function selectCat(event) {
 //     <h3>Temperament:</h3>
 //     <p>${temperament}</p>
 //     </div>`;
-//       // descriptionCatInfo.classList.remove('is-hidden');
+//       descriptionCatInfo.classList.remove('is-hidden');
 //       loaderWaitMessage.classList.add('is-hidden');
 // }
       
