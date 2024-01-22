@@ -75,10 +75,10 @@ function selectCat(event) {
   loaderWaitMessage.classList.remove('is-hidden');
 // createMarkUp()
     // return breedId;
-        if (breedId) {
-        descriptionCatInfo.classList.remove('is-hidden');
-  }
-  alert(breedId)
+  //       if (breedId) {
+  //       descriptionCatInfo.classList.remove('is-hidden');
+  // }
+
                        
   fetchCatByBreed(breedId)
     .then(data => {
@@ -91,7 +91,7 @@ function selectCat(event) {
       //   console.log(breeds[0].temperament);
       // descriptionCatInfo.classList.remove('is-hidden');
 
-      function createMarkUp(view) {
+      // function createMarkUp() {
   descriptionCatInfo.innerHTML = `<div class="cat-info-img">
     <img src="${url}" alt="${name}" width="400"/>
     </div>
@@ -103,8 +103,8 @@ function selectCat(event) {
     </div>`;
       descriptionCatInfo.classList.remove('is-hidden');
       loaderWaitMessage.classList.add('is-hidden');
-}
-      createMarkUp();
+// }
+      // createMarkUp();
 
     })
 
