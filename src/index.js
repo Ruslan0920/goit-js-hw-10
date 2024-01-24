@@ -4,6 +4,7 @@ const BASE_URL = (axios.defaults.baseURL = 'https://api.thecatapi.com/v1');
 const KEY = (axios.defaults.headers.common['x-api-key'] =
   'live_58gwQPyj3Dq4FvqlCn68AVFWNKhsfMh6HOo9fnFo4DK8Vdp1k0H2kuN0I3s8SFgq');
 
+ 
 import './styles.css';
 import SlimSelect from 'slim-select';
 import '../node_modules/slim-select/dist/slimselect.css';
@@ -27,13 +28,13 @@ cardContainer.addEventListener('change', selectCat);
 // loaderWaitMessage.classList.add('is-hidden');
 
 let arrCats = [];
-// console.log(arrCats);
+console.log(arrCats);
 
 function fetchBreeds() {
   return fetch(`${BASE_URL}/breeds`)
     .then(response => {
     console.log(response);
-    return response.json();
+      return response.json();
   });
   // .catch(error => alert('Oops! Something went wrong! Try reloading the page!'));
 }
@@ -42,7 +43,7 @@ fetchBreeds()
   .then(cats => {
     // console.log(cats);
     cats.map(cat => {
-      // console.log(cat.name);
+      // console.log(cats);
       arrCats.push({ text: cat.name, value: cat.id });
       cardContainer.style.display = 'flex';
       // descriptionCatInfo.classList.add('is-hidden');
