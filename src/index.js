@@ -19,7 +19,7 @@ const errorMessage = document.querySelector('.error');
 const descriptionCatInfo = document.querySelector('.cat-info');
 // console.log(descriptionCatInfo);
 
-cardContainer.addEventListener('change', selectCat);
+// cardContainer.addEventListener('change', selectCat);
 
 // cardContainer.classList.add('is-hidden');
 // descriptionCatInfo.classList.add('is-hidden');
@@ -39,14 +39,19 @@ function fetchBreeds() {
   // .catch(error => alert('Oops! Something went wrong! Try reloading the page!'));
 }
 
+let breedId;
+console.log(breedId);
+
 fetchBreeds()
   .then(cats => {
     // console.log(cats);
     cats.map(cat => {
-      // console.log(cats);
+      // console.log(cat.id);
       arrCats.push({ text: cat.name, value: cat.id });
       cardContainer.style.display = 'flex';
       // descriptionCatInfo.classList.add('is-hidden');
+      breedId = cat.id;
+      console.log(breedId);
     });
 
     const inputCats = new SlimSelect({
@@ -55,33 +60,15 @@ fetchBreeds()
     });
 
     console.log(inputCats);
-  })
-  .catch(fetchError);
 
-// let breedId;
-// console.log(breedId);
-
-function selectCat(event) {
-  
-//   cardContainer.style.display = 'flex';
-  event.preventDefault();
-  console.log(event);
-//   console.log(event.target);
-  // console.log(event.currentTarget.value);
-
-  breedId = event.currentTarget.value;
-  console.log(breedId);
-  // descriptionCatInfo.style.display = 'block';
-  descriptionCatInfo.classList.add('is-hidden');
-  loaderWaitMessage.classList.remove('is-hidden');
-// createMarkUp()
-    // return breedId;
-  //       if (breedId) {
-  //       createMarkUp()
-  // }
-
-                       
-  fetchCatByBreed(breedId)
+function fetchCatByBreed(breedId) {
+    return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}`, { headers: {'x-api-key': KEY}})
+        .then(response => {
+            console.log(response);
+return response.json();
+    });
+};
+fetchCatByBreed(breedId)
     .then(data => {
       console.dir(data);
       console.dir(data[0].id);
@@ -110,7 +97,64 @@ function selectCat(event) {
     })
 
     .catch(fetchError);
-}
+  })
+  .catch(fetchError);
+
+    
+
+// let breedId;
+// console.log(breedId);
+
+// function selectCat(event) {
+  
+// //   cardContainer.style.display = 'flex';
+//   event.preventDefault();
+//   console.log(event);
+// //   console.log(event.target);
+//   // console.log(event.currentTarget.value);
+
+//   breedId = event.currentTarget.value;
+//   console.log(breedId);
+//   // descriptionCatInfo.style.display = 'block';
+//   descriptionCatInfo.classList.add('is-hidden');
+//   loaderWaitMessage.classList.remove('is-hidden');
+// // createMarkUp()
+//     // return breedId;
+//   //       if (breedId) {
+//   //       createMarkUp()
+//   // }
+
+                       
+//   fetchCatByBreed(breedId)
+//     .then(data => {
+//       console.dir(data);
+//       console.dir(data[0].id);
+      
+//       const {url, breeds: [{ name, description, temperament}]} = data[0];
+//       console.log(url);
+//       // {temperament: catTemperament, name: catName, description: catDescription}
+//       //   console.log(breeds[0].temperament);
+//       // descriptionCatInfo.classList.remove('is-hidden');
+
+//       function createMarkUp() {
+//   descriptionCatInfo.innerHTML = `<div class="cat-info-img">
+//     <img src="${url}" alt="${name}" width="400"/>
+//     </div>
+//     <div class="cat-info-container">
+//     <h2>${name}</h2>
+//     <p>${description}</p>
+//     <h3>Temperament:</h3>
+//     <p>${temperament}</p>
+//     </div>`;
+//       descriptionCatInfo.classList.remove('is-hidden');
+//       loaderWaitMessage.classList.add('is-hidden');
+// }
+//       createMarkUp();
+
+//     })
+
+//     .catch(fetchError);
+// }
 
 // let breedId;
 // console.log(breedId);
@@ -163,13 +207,13 @@ function selectCat(event) {
       
 
 
-function fetchCatByBreed(breedId) {
-    return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}`, { headers: {'x-api-key': KEY}})
-        .then(response => {
-            console.log(response);
-return response.json();
-    });
-};
+// function fetchCatByBreed(breedId) {
+//     return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}`, { headers: {'x-api-key': KEY}})
+//         .then(response => {
+//             console.log(response);
+// return response.json();
+//     });
+// };
 
 function fetchError(error) {
   console.log(error);
