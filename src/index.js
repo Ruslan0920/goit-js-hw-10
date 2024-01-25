@@ -19,7 +19,7 @@ const errorMessage = document.querySelector('.error');
 const descriptionCatInfo = document.querySelector('.cat-info');
 // console.log(descriptionCatInfo);
 
-// cardContainer.addEventListener('change', selectCat);
+cardContainer.addEventListener('change', selectCat);
 
 // cardContainer.classList.add('is-hidden');
 // descriptionCatInfo.classList.add('is-hidden');
@@ -79,6 +79,15 @@ fetchCatByBreed(breedId)
       //   console.log(breeds[0].temperament);
       // descriptionCatInfo.classList.remove('is-hidden');
 
+
+
+    })
+
+    .catch(fetchError);
+  })
+  .catch(fetchError);
+
+function selectCat(breedId) {
       function createMarkUp() {
   descriptionCatInfo.innerHTML = `<div class="cat-info-img">
     <img src="${url}" alt="${name}" width="400"/>
@@ -93,14 +102,7 @@ fetchCatByBreed(breedId)
       loaderWaitMessage.classList.add('is-hidden');
 }
       createMarkUp();
-
-    })
-
-    .catch(fetchError);
-  })
-  .catch(fetchError);
-
-    
+}
 
 // let breedId;
 // console.log(breedId);
