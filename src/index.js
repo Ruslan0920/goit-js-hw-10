@@ -50,7 +50,7 @@ fetchBreeds()
       arrCats.push({ text: cat.name, value: cat.id });
       cardContainer.style.display = 'flex';
       // descriptionCatInfo.classList.add('is-hidden');
-      // breedId = cat.id;
+      breedId = cat.id;
       // console.log(breedId);
     });
 
@@ -77,27 +77,27 @@ fetchBreeds()
 fetchCatByBreed(breedId)
     .then(data => {
       console.dir(data);
-      console.dir(data[0].breeds);
+      // console.dir(data[0].breeds);
       
-      const {url, breeds: [{ name, description, temperament}]} = data[0];
-      console.log(temperament);
+      // const {url, breeds: [{ name, description, temperament}]} = data[0];
+      // console.log(temperament);
       // {temperament: catTemperament, name: catName, description: catDescription}
       //   console.log(breeds[0].temperament);
       // descriptionCatInfo.classList.remove('is-hidden');
-      function createMarkUp() {
-  descriptionCatInfo.innerHTML = `<div class="cat-info-img">
-    <img src="${url}" alt="${name}" width="400"/>
-    </div>
-    <div class="cat-info-container">
-    <h2>${name}</h2>
-    <p>${description}</p>
-    <h3>Temperament:</h3>
-    <p>${temperament}</p>
-    </div>`;
-      descriptionCatInfo.classList.remove('is-hidden');
-      loaderWaitMessage.classList.add('is-hidden');
-      }
-      createMarkUp();
+  //     function createMarkUp() {
+  // descriptionCatInfo.innerHTML = `<div class="cat-info-img">
+  //   <img src="${url}" alt="${name}" width="400"/>
+  //   </div>
+  //   <div class="cat-info-container">
+  //   <h2>${name}</h2>
+  //   <p>${description}</p>
+  //   <h3>Temperament:</h3>
+  //   <p>${temperament}</p>
+  //   </div>`;
+  //     descriptionCatInfo.classList.remove('is-hidden');
+  //     loaderWaitMessage.classList.add('is-hidden');
+  //     }
+  //     createMarkUp();
     })
     .catch(fetchError);
   
