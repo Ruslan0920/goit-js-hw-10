@@ -39,8 +39,8 @@ function fetchBreeds() {
   // .catch(error => alert('Oops! Something went wrong! Try reloading the page!'));
 }
 
-// let breedId;
-// console.log(breedId);
+let breedId;
+console.log(breedId);
 
 fetchBreeds()
   .then(cats => {
@@ -61,11 +61,15 @@ fetchBreeds()
 
     console.log(inputCats);
 
-function fetchCatByBreed(breedId) {
+
+  })
+  .catch(fetchError);
+
+  function fetchCatByBreed(breedId) {
     return fetch(`${BASE_URL}/images/search?breed_ids=${breedId}`, { headers: {'x-api-key': KEY}})
         .then(response => {
-            console.log(response);
-return response.json();
+          console.log(response);          
+    return response.json();
     });
     };
     
@@ -75,19 +79,28 @@ fetchCatByBreed(breedId)
       console.dir(data);
       console.dir(data[0].breeds);
       
-      // const {url, breeds: [{ name, description, temperament}]} = data[0];
-      // console.log(url);
+      const {url, breeds: [{ name, description, temperament}]} = data[0];
+      console.log(temperament);
       // {temperament: catTemperament, name: catName, description: catDescription}
       //   console.log(breeds[0].temperament);
       // descriptionCatInfo.classList.remove('is-hidden');
-
-
-
+      function createMarkUp() {
+  descriptionCatInfo.innerHTML = `<div class="cat-info-img">
+    <img src="${url}" alt="${name}" width="400"/>
+    </div>
+    <div class="cat-info-container">
+    <h2>${name}</h2>
+    <p>${description}</p>
+    <h3>Temperament:</h3>
+    <p>${temperament}</p>
+    </div>`;
+      descriptionCatInfo.classList.remove('is-hidden');
+      loaderWaitMessage.classList.add('is-hidden');
+      }
+      createMarkUp();
     })
-
     .catch(fetchError);
-  })
-  .catch(fetchError);
+  
 
 function selectCat(event) {
   // console.log(event.currentTarget.value);
@@ -106,7 +119,7 @@ function selectCat(event) {
 //       descriptionCatInfo.classList.remove('is-hidden');
 //       loaderWaitMessage.classList.add('is-hidden');
 // }
-//       createMarkUp();
+      // createMarkUp();
 }
 
 // let breedId;
