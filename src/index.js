@@ -39,8 +39,8 @@ function fetchBreeds() {
   // .catch(error => alert('Oops! Something went wrong! Try reloading the page!'));
 }
 
-let breedId;
-console.log(breedId);
+// let breedId;
+// console.log(breedId);
 
 fetchBreeds()
   .then(cats => {
@@ -50,8 +50,8 @@ fetchBreeds()
       arrCats.push({ text: cat.name, value: cat.id });
       cardContainer.style.display = 'flex';
       // descriptionCatInfo.classList.add('is-hidden');
-      breedId = cat.id;
-      console.log(breedId);
+      // breedId = cat.id;
+      // console.log(breedId);
     });
 
     const inputCats = new SlimSelect({
@@ -67,14 +67,16 @@ function fetchCatByBreed(breedId) {
             console.log(response);
 return response.json();
     });
-};
+    };
+    
+
 fetchCatByBreed(breedId)
     .then(data => {
       console.dir(data);
-      console.dir(data[0].id);
+      console.dir(data[0].breeds);
       
-      const {url, breeds: [{ name, description, temperament}]} = data[0];
-      console.log(url);
+      // const {url, breeds: [{ name, description, temperament}]} = data[0];
+      // console.log(url);
       // {temperament: catTemperament, name: catName, description: catDescription}
       //   console.log(breeds[0].temperament);
       // descriptionCatInfo.classList.remove('is-hidden');
@@ -87,21 +89,24 @@ fetchCatByBreed(breedId)
   })
   .catch(fetchError);
 
-function selectCat(breedId) {
-      function createMarkUp() {
-  descriptionCatInfo.innerHTML = `<div class="cat-info-img">
-    <img src="${url}" alt="${name}" width="400"/>
-    </div>
-    <div class="cat-info-container">
-    <h2>${name}</h2>
-    <p>${description}</p>
-    <h3>Temperament:</h3>
-    <p>${temperament}</p>
-    </div>`;
-      descriptionCatInfo.classList.remove('is-hidden');
-      loaderWaitMessage.classList.add('is-hidden');
-}
-      createMarkUp();
+function selectCat(event) {
+  // console.log(event.currentTarget.value);
+  breedId = event.currentTarget.value;
+  console.log(breedId);
+//       function createMarkUp() {
+//   descriptionCatInfo.innerHTML = `<div class="cat-info-img">
+//     <img src="${url}" alt="${name}" width="400"/>
+//     </div>
+//     <div class="cat-info-container">
+//     <h2>${name}</h2>
+//     <p>${description}</p>
+//     <h3>Temperament:</h3>
+//     <p>${temperament}</p>
+//     </div>`;
+//       descriptionCatInfo.classList.remove('is-hidden');
+//       loaderWaitMessage.classList.add('is-hidden');
+// }
+//       createMarkUp();
 }
 
 // let breedId;
