@@ -71,11 +71,15 @@ function selectCat(event) {
   // console.log(event.currentTarget.value);
   breedId = event.currentTarget.value;
   console.log(breedId);
+descriptionCatInfo.classList.add('is-hidden');
+
 
   fetchCatByBreed(breedId)
     .then(data => {
       console.dir(data);
       // console.dir(data[0].breeds);
+
+
       
       const {url, breeds: [{ name, description, temperament}]} = data[0];
       // console.log(temperament);
@@ -92,8 +96,12 @@ function selectCat(event) {
     <h3>Temperament:</h3>
     <p>${temperament}</p>
     </div>`;
-      descriptionCatInfo.classList.remove('is-hidden');
-      loaderWaitMessage.classList.add('is-hidden');
+    
+      // descriptionCatInfo.classList.remove('is-hidden');
+        loaderWaitMessage.classList.add('is-hidden');
+                        if (!breedId === 'abys') {
+          descriptionCatInfo.classList.remove('is-hidden');
+        }
       }
       createMarkUp();
     })
