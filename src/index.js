@@ -86,6 +86,7 @@ descriptionCatInfo.classList.add('is-hidden');
       // {temperament: catTemperament, name: catName, description: catDescription}
       //   console.log(breeds[0].temperament);
       // descriptionCatInfo.classList.remove('is-hidden');
+            loaderWaitMessage.classList.add('is-hidden');
       function createMarkUp() {
   descriptionCatInfo.innerHTML = `<div class="cat-info-img">
     <img src="${url}" alt="${name}" width="400"/>
@@ -100,12 +101,17 @@ descriptionCatInfo.classList.add('is-hidden');
       // descriptionCatInfo.classList.remove('is-hidden');
         loaderWaitMessage.classList.add('is-hidden');
                         if (breedId !== 'abys') {
-          descriptionCatInfo.classList.remove('is-hidden');
+                          descriptionCatInfo.classList.remove('is-hidden');
+                          loaderWaitMessage.classList.remove('is-hidden');
         }
+        
       }
+
       createMarkUp();
+
     })
     .catch(fetchError);
+  // loaderWaitMessage.classList.add('is-hidden');
 
 //       function createMarkUp() {
 //   descriptionCatInfo.innerHTML = `<div class="cat-info-img">
