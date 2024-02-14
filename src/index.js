@@ -99,7 +99,7 @@ descriptionCatInfo.classList.add('is-hidden');
     
       // descriptionCatInfo.classList.remove('is-hidden');
         loaderWaitMessage.classList.add('is-hidden');
-                        if (!breedId === 'abys') {
+                        if (breedId !== 'abys') {
           descriptionCatInfo.classList.remove('is-hidden');
         }
       }
