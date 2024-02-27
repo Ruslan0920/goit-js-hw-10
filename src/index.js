@@ -78,7 +78,7 @@ descriptionCatInfo.classList.add('is-hidden');
     .then(data => {
       console.dir(data);
       // console.dir(data[0].breeds);
-
+     
 
       
       const {url, breeds: [{ name, description, temperament}]} = data[0];
@@ -86,7 +86,13 @@ descriptionCatInfo.classList.add('is-hidden');
       // {temperament: catTemperament, name: catName, description: catDescription}
       //   console.log(breeds[0].temperament);
       // descriptionCatInfo.classList.remove('is-hidden');
-            loaderWaitMessage.classList.add('is-hidden');
+      loaderWaitMessage.classList.add('is-hidden');
+      
+                              if (breedId !== 'abys') {
+                          descriptionCatInfo.classList.remove('is-hidden');
+                          loaderWaitMessage.classList.remove('is-hidden');                              
+        }
+      
       function createMarkUp() {
   descriptionCatInfo.innerHTML = `<div class="cat-info-img">
     <img src="${url}" alt="${name}" width="400"/>
@@ -99,15 +105,14 @@ descriptionCatInfo.classList.add('is-hidden');
     </div>`;
     
       // descriptionCatInfo.classList.remove('is-hidden');
-        loaderWaitMessage.classList.add('is-hidden');
-                        if (breedId !== 'abys') {
-                          descriptionCatInfo.classList.remove('is-hidden');
-                          loaderWaitMessage.classList.remove('is-hidden');
-                              
-        }
-        // 
-        loaderWaitMessage.classList.remove('is-hidden');
-        loaderWaitMessage.classList.add('is-hidden');
+        // loaderWaitMessage.classList.add('is-hidden');
+        //                 if (breedId !== 'abys') {
+        //                   descriptionCatInfo.classList.remove('is-hidden');
+        //                   loaderWaitMessage.classList.remove('is-hidden');                              
+        // }
+        
+        // loaderWaitMessage.classList.remove('is-hidden');
+        // loaderWaitMessage.classList.add('is-hidden');
       }
 
       createMarkUp();
