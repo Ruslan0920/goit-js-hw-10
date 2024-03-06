@@ -112,7 +112,7 @@ descriptionCatInfo.classList.add('is-hidden');
         // }
         
         // loaderWaitMessage.classList.remove('is-hidden');
-        // loaderWaitMessage.classList.add('is-hidden');
+        loaderWaitMessage.classList.add('is-hidden');
       }
 
       createMarkUp();
