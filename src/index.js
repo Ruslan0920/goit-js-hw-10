@@ -90,7 +90,7 @@ descriptionCatInfo.classList.add('is-hidden');
       
                               if (breedId !== 'abys') {
                           descriptionCatInfo.classList.remove('is-hidden');
-                          loaderWaitMessage.classList.remove('is-hidden');                              
+                          loaderWaitMessage.classList.remove('is-hidden');
         }
       
       function createMarkUp() {
@@ -112,14 +112,14 @@ descriptionCatInfo.classList.add('is-hidden');
         // }
         
         // loaderWaitMessage.classList.remove('is-hidden');
-        loaderWaitMessage.classList.add('is-hidden');
+        // loaderWaitMessage.classList.add('is-hidden');
       }
 
       createMarkUp();
 
     })
     .catch(fetchError);
-  // loaderWaitMessage.classList.add('is-hidden');
+  loaderWaitMessage.classList.add('is-hidden');
 
 //       function createMarkUp() {
 //   descriptionCatInfo.innerHTML = `<div class="cat-info-img">
