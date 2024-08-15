@@ -283,7 +283,7 @@ function fetchError(error) {
 // //   .searchImages({
 // //     limit: 6,
 // //   })
-// //   .then((images) => {
+// //   .then((images) => {                                                                                                                                                                                                       
 // //     console.log(images);
 // //   })
 // //   .catch((error) => {
